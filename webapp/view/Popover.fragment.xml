@@ -11,15 +11,10 @@
 
 		<core:InvisibleText id="sn-label" text="Main navigation"/>
 
-		<tnt:SideNavigation id="sideNav" width="17rem" itemSelect="onItemSelect" selectedKey="home" design="Plain">
+		<tnt:SideNavigation id="sideNav" width="17rem" itemSelect=".onItemSelect" selectedKey="home" design="Plain">
 			<tnt:NavigationList>
 				<tnt:NavigationListItem text="Home" icon="sap-icon://home" key="home"/>
-				<tnt:NavigationListItem <Link
-				text="User"
-                icon="sap-icon://SAP-icons-TNT/user" 
-                key="user"
-				target="_blank"
-				href="http://www.sap.com" /> />
+				<tnt:NavigationListItem text="User" icon="sap-icon://SAP-icons-TNT/user" press="onGoToUser" key="user"/>
 			
 			</tnt:NavigationList>
 

@@ -52,9 +52,9 @@
           "bundleName": "sample.project1.i18n.i18n"
         }
       },
-      "orderDetailModel":{
-          "type": "sap.ui.model.json.JSONModel",
-          "uri": "model/orderData.json"
+      "orderDetailModel": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "model/orderData.json"
       }
     },
     "resources": {

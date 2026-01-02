@@ -11,42 +11,45 @@ sap.ui.define([
         onInit: function () {
             themeHelper.initTheme();
         },
+        onGoToUser: function () {
+            this.getOwnerComponent().getRouter().navTo("View2");
+        },
         onToggleSideNav: async function (oEvent) {
-			var oButton = oEvent.getSource(),
-				oView = this.getView();
+            var oButton = oEvent.getSource(),
+                oView = this.getView();
 
-			if (!this._oPopover) {
-				this._oPopover = await Fragment.load({
-					id: oView.getId(),
-					name: "sap.tnt.sample.SideNavigationOverlayMode.Popover",
-					controller: this
-				});
-				oView.addDependent(this._oPopover);
-				this._oPopover.setShowHeader(Device.system.phone);
-			}
+            if (!this._oPopover) {
+                this._oPopover = await Fragment.load({
+                    id: oView.getId(),
+                    name: "sample.project1.view.Popover",
+                    controller: this
+                });
+                oView.addDependent(this._oPopover);
+                this._oPopover.setShowHeader(Device.system.phone);
+            }
 
-			if (this._oPopover.isOpen()) {
-				this._oPopover.close();
-			} else {
-				this._oPopover.openBy(oButton);
-			}
-		},
+            if (this._oPopover.isOpen()) {
+                this._oPopover.close();
+            } else {
+                this._oPopover.openBy(oButton);
+            }
+        },
         onItemSelect: function (oEvent) {
-			var oItem = oEvent.getParameter("item");
-			var sKey = oItem.getKey();
-			var oNavCon = this.byId("pageContainer");
+            var oItem = oEvent.getParameter("item");
+            var sKey = oItem.getKey();
+            var oNavCon = this.byId("pageContainer");
 
-			if (sKey && oItem.getSelectable()) {
-				const oVBox = this.byId(sKey).getContent()[0];
-				const oText = oVBox.getItems()[0];
-				oText.setText("Fired event to load page " + sKey.replace("page", ""));
-				oNavCon.to(this.byId(sKey));
-			}
+            if (sKey && oItem.getSelectable()) {
+                const oVBox = this.byId(sKey).getContent()[0];
+                const oText = oVBox.getItems()[0];
+                oText.setText("Fired event to load page " + sKey.replace("page", ""));
+                oNavCon.to(this.byId(sKey));
+            }
 
-			if (this._oPopover.isOpen()) {
-				this._oPopover.close();
-			}
-		},
+            if (this._oPopover.isOpen()) {
+                this._oPopover.close();
+            }
+        },
         onPress: function (oEvent) {
             const oModel = this.getView().getModel("orderDetailModel");
             const aOrderData = oModel.getProperty("/orderDetails");
