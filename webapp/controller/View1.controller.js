@@ -10,10 +10,10 @@ sap.ui.define([
     return Controller.extend("sample.project1.controller.View1", {
         onInit: function () {
             themeHelper.initTheme();
-            var oTableModel = new JSONModel({
-                orderDetails: []
-            });
-            this.getView().setModel(oTableModel, "orderDetailModel");
+            // var oTableModel = new JSONModel({
+            //     orderDetails: []
+            // });
+            // this.getView().setModel(oTableModel, "orderDetailModel");
         },
         onPress: function (oEvent) {
             const oModel = this.getView().getModel("orderDetailModel");

@@ -8,22 +8,10 @@
 	xmlns:core="sap.ui.core"
 	height="100%">
     <Page id="page" title="{i18n>title}">
-    <Title text="Order Details" level="H2"/>
-    	<!-- <VBox id="vbox" alignItems="Center">
-            <Avatar
-                id="avt"
-                src="{/Woman01}"
-                displaySize="XL"
-                showBorder="true"
-                press="onPress"/>
-            <Text
-                id="avatarText"
-                text="My Profile"
-                class="text1"/>
-		</VBox> -->
-	<VBox class="sapUiSmallMargin">
+	<HBox class="sapUiSmallMargin">
+		<Title text="Order Details" level="H2"/>
 		<Button icon="sap-icon://overflow" text="Theme" press="onOpenThemeMenu" />
-	</VBox>
+	</HBox>
 	
 
     <VBox class="sapUiSmallMargin">
