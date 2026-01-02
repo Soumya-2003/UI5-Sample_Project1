@@ -11,9 +11,6 @@ sap.ui.define([
         onInit: function () {
             themeHelper.initTheme();
         },
-        onGoToUser: function () {
-            this.getOwnerComponent().getRouter().navTo("View2");
-        },
         onToggleSideNav: async function (oEvent) {
             var oButton = oEvent.getSource(),
                 oView = this.getView();
@@ -37,14 +34,20 @@ sap.ui.define([
         onItemSelect: function (oEvent) {
             var oItem = oEvent.getParameter("item");
             var sKey = oItem.getKey();
-            var oNavCon = this.byId("pageContainer");
+            // var oNavCon = this.byId("pageContainer");
 
-            if (sKey && oItem.getSelectable()) {
-                const oVBox = this.byId(sKey).getContent()[0];
-                const oText = oVBox.getItems()[0];
-                oText.setText("Fired event to load page " + sKey.replace("page", ""));
-                oNavCon.to(this.byId(sKey));
+            // const sKey = oEvent.getParameter("item").getKey();
+            const oRouter = this.getOwnerComponent().getRouter();
+
+            if (sKey === "home") {
+                oRouter.navTo("RouteView1");
             }
+
+            if (sKey === "user") {
+                oRouter.navTo("RouteUser");
+            }
+
+            this._oPopover.close();
 
             if (this._oPopover.isOpen()) {
                 this._oPopover.close();

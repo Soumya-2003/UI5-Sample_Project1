@@ -83,12 +83,22 @@
           "target": [
             "TargetView1"
           ]
+        },
+        {
+          "name": "RouteUser",
+          "pattern": "user",
+          "target": "TargetUser"
         }
       ],
       "targets": {
         "TargetView1": {
           "id": "View1",
           "name": "View1"
+        },
+        "TargetUser": {
+          "viewName": "View2",
+          "viewId": "View2",
+          "viewLevel": 2
         }
       }
     },
