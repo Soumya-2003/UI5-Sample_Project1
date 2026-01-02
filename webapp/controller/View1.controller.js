@@ -2,16 +2,18 @@ sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/json/JSONModel",
     "sap/m/MessageBox",
-    "sap/ui/core/Fragment"
-], (Controller, JSONModel, MessageBox, Fragment) => {
+    "sap/ui/core/Fragment",
+    "sample/project1/helper/themeHelper"
+], (Controller, JSONModel, MessageBox, Fragment, themeHelper) => {
     "use strict";
 
     return Controller.extend("sample.project1.controller.View1", {
         onInit: function () {
+            themeHelper.initTheme();
             var oTableModel = new JSONModel({
-                orders: []
+                orderDetails: []
             });
-            this.getView().setModel(oTableModel);
+            this.getView().setModel(oTableModel, "orderDetailModel");
         },
         onPress: function (oEvent) {
             const oModel = this.getView().getModel("orderDetailModel");
@@ -49,12 +51,12 @@ sap.ui.define([
             var oTable = oEvent.getSource().getParent().getParent();
             oTable.setFixedLayout(bFixedLayout);
         },
-        onPressOpenOverflowMenu: function (oEvent) {
+        onOpenThemeMenu: function (oEvent) {
             var oView = this.getView();
 
             if (!this._oThemeMenu) {
                 Fragment.load({
-                    name: "sample.project1.view.overflowMenu",
+                    name: "sample.project1.view.Menu",
                     controller: this
                 }).then(function (oMenu) {
                     this._oThemeMenu = oMenu;
@@ -67,7 +69,7 @@ sap.ui.define([
         },
         onSelectTheme: function (oEvent) {
             var sTheme = oEvent.getParameter("item").getKey();
-            sap.ui.getCore().applyTheme(sTheme);
+            themeHelper.setTheme(sTheme);
         }
 
     });

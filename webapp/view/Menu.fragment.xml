@@ -1,0 +1,8 @@
+<core:FragmentDefinition
+		xmlns="sap.m"
+		xmlns:core="sap.ui.core">
+	<Menu itemSelected="onSelectTheme">
+		<MenuItem key="sap_fiori_3" text="Standard Light" />
+		<MenuItem key="sap_fiori_3_dark" text="Standard Dark" />
+	</Menu>
+</core:FragmentDefinition>

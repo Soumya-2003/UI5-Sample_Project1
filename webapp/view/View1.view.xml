@@ -8,7 +8,7 @@
 	xmlns:core="sap.ui.core"
 	height="100%">
     <Page id="page" title="{i18n>title}">
-    <Text class="first-text" text="Order Details"/>
+    <Title text="Order Details" level="H2"/>
     	<!-- <VBox id="vbox" alignItems="Center">
             <Avatar
                 id="avt"
@@ -21,15 +21,9 @@
                 text="My Profile"
                 class="text1"/>
 		</VBox> -->
-	<Button icon="sap-icon://overflow" press="onOpenThemeMenu" />
-	<!-- <Menu itemSelected="onSelectTheme" >
-                <MenuItem text="Accessibility">
-                    <items>
-                        <MenuItem key="sap_fiori_3" text="Standard Light" />
-                        <MenuItem key="sap_fiori_3_dark" text="Standard Dark" />
-                    </items>
-                </MenuItem>
-    </Menu> -->
+	<VBox class="sapUiSmallMargin">
+		<Button icon="sap-icon://overflow" text="Theme" press="onOpenThemeMenu" />
+	</VBox>
 	
 
     <VBox class="sapUiSmallMargin">
