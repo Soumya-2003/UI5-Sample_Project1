@@ -1,0 +1,16 @@
+{
+    "orderDetails": [
+        {
+            "OrderID": "1001",
+            "CustomerName": "Rahul Sharma",
+            "ProductName": "Laptop",
+            "Quantity": "2"
+        },
+        {
+                "OrderID": "1003",
+                "CustomerName": "Suresh Kumar",
+                "ProductName": "Office Chair",
+                "Quantity": "1"
+            }
+    ]
+}

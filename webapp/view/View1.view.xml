@@ -1,0 +1,106 @@
+<mvc:View controllerName="sample.project1.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:mdc="sap.ui.mdc"
+    xmlns:mdct="sap.ui.mdc.table"
+	xmlns:core="sap.ui.core"
+	height="100%">
+    <Page id="page" title="{i18n>title}">
+    <Text class="first-text" text="Order Details"/>
+    	<!-- <VBox id="vbox" alignItems="Center">
+            <Avatar
+                id="avt"
+                src="{/Woman01}"
+                displaySize="XL"
+                showBorder="true"
+                press="onPress"/>
+            <Text
+                id="avatarText"
+                text="My Profile"
+                class="text1"/>
+		</VBox> -->
+	<Button icon="sap-icon://overflow" press="onOpenThemeMenu" />
+	<!-- <Menu itemSelected="onSelectTheme" >
+                <MenuItem text="Accessibility">
+                    <items>
+                        <MenuItem key="sap_fiori_3" text="Standard Light" />
+                        <MenuItem key="sap_fiori_3_dark" text="Standard Dark" />
+                    </items>
+                </MenuItem>
+    </Menu> -->
+	
+
+    <VBox class="sapUiSmallMargin">
+		<f:SimpleForm id="SimpleFormDisplay354"
+			editable="false"
+			layout="ResponsiveGridLayout"
+			title="Order Entry Form"
+            singleContainerFullSize="false"
+	    >
+            <f:content>
+                <Label text="Order ID" />
+                <Input id="id-order" type="Number" value="{orderDetailModel>/OrderID}" />
+                <Label text="Customer" />
+                <Input id="id-name" value="{orderDetailModel>/CustomerName}" />
+                <Label text="Product" />
+                <Input id="id-product" value="{orderDetailModel>/ProductName}" />
+                <Label text="Quantity" />
+                <Input id="id-quantity" type="Number" value="{orderDetailModel>/Quantity}" />
+            </f:content>
+            
+	    </f:SimpleForm>
+    </VBox>
+    <HBox class="hbox-button">
+		<Button text="Submit"
+				press="onPress"
+				class="sapUiSmallMarginBottom"
+		>
+		</Button>
+	</HBox>
+    
+    <Table
+		items="{
+			path: 'orderDetailModel>/orderDetails',
+			sorter: {
+				path: 'Name'
+			}
+		}">
+		<headerToolbar>
+			<OverflowToolbar>
+				<Title text="Order Summary" level="H2"/>
+				<ToolbarSpacer/>
+				<CheckBox text="Fixed Layout" selected="true" select="onCheckBoxSelect"/>
+				<Button text="Open Dialog" press="onOpenPressed"/>
+			</OverflowToolbar>
+		</headerToolbar>
+		<columns>
+			<Column>
+				<Text text="Order ID" />
+			</Column>
+			<Column>
+				<Text text="Customer" />
+			</Column>
+			<Column>
+				<Text text="Product" />
+			</Column>
+            <Column>
+				<Text text="Quantity" />
+			</Column>
+
+		</columns>
+		<items>
+			<ColumnListItem vAlign="Middle" type="Navigation">
+				<cells>
+					<Text text="{orderDetailModel>OrderID}" wrapping="false" />
+					<Text text="{orderDetailModel>CustomerName}" wrapping="false"/>
+					<Text text="{orderDetailModel>ProductName}" />
+                    <Text text="{orderDetailModel>Quantity}" />
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+
+    </Page>
+</mvc:View>
