@@ -10,23 +10,15 @@
     <Page id="page" title="{i18n>title}">
 	<customHeader>
 				<OverflowToolbar>
-					<Button icon="sap-icon://menu2" press=".onToggleSideNav" />
+					<Button icon="sap-icon://menu2" press="onToggleSideNav" />
 					<Title text="Order Details" level="H2" />
 					<ToolbarSpacer />
 					<Button icon="sap-icon://search"/>
 					<Button icon="sap-icon://bell"/>
-					<OverflowToolbar class="sapUiMediumMarginTop">
-			<ToolbarSpacer/>
-			<Button class="theme-button" text="Theme" press="onOpenThemeMenu" />
-		</OverflowToolbar>
+					<Button class="theme-button" text="Theme" press="onOpenThemeMenu" />
 					<Avatar initials="SN" displaySize="XS" />
 				</OverflowToolbar>
-			</customHeader>
-		
-		
-	
-		
-	
+	</customHeader>
 
     <VBox class="sapUiSmallMargin">
 		<f:SimpleForm id="SimpleFormDisplay354"
@@ -89,6 +81,9 @@
 			</Column>
             <Column>
 				<Text text="Quantity" />
+			</Column>
+			<Column>
+				<Text text="Priority" />
 			</Column>
 
 		</columns>

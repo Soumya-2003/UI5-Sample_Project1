@@ -6,15 +6,47 @@ sap.ui.define([
     "sample/project1/helper/themeHelper"
 ], (Controller, JSONModel, MessageBox, Fragment, themeHelper) => {
     "use strict";
-
+    // var ButtonType = library.ButtonType;
     return Controller.extend("sample.project1.controller.View1", {
         onInit: function () {
             themeHelper.initTheme();
-            // var oTableModel = new JSONModel({
-            //     orderDetails: []
-            // });
-            // this.getView().setModel(oTableModel, "orderDetailModel");
         },
+        onToggleSideNav: async function (oEvent) {
+			var oButton = oEvent.getSource(),
+				oView = this.getView();
+
+			if (!this._oPopover) {
+				this._oPopover = await Fragment.load({
+					id: oView.getId(),
+					name: "sap.tnt.sample.SideNavigationOverlayMode.Popover",
+					controller: this
+				});
+				oView.addDependent(this._oPopover);
+				this._oPopover.setShowHeader(Device.system.phone);
+			}
+
+			if (this._oPopover.isOpen()) {
+				this._oPopover.close();
+			} else {
+				this._oPopover.openBy(oButton);
+			}
+		},
+        onItemSelect: function (oEvent) {
+			var oItem = oEvent.getParameter("item");
+			var sKey = oItem.getKey();
+			var oNavCon = this.byId("pageContainer");
+
+			if (sKey && oItem.getSelectable()) {
+				const oVBox = this.byId(sKey).getContent()[0];
+				const oText = oVBox.getItems()[0];
+				oText.setText("Fired event to load page " + sKey.replace("page", ""));
+				oNavCon.to(this.byId(sKey));
+			}
+
+			if (this._oPopover.isOpen()) {
+				this._oPopover.close();
+			}
+		},
         onPress: function (oEvent) {
             const oModel = this.getView().getModel("orderDetailModel");
             const aOrderData = oModel.getProperty("/orderDetails");

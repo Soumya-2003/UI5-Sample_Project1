@@ -1,0 +1,29 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:tnt="sap.tnt">
+
+	<ResponsivePopover
+		id="respPopover"
+		placement="Bottom"
+		verticalScrolling="false"
+		ariaLabelledBy="sn-label">
+
+		<core:InvisibleText id="sn-label" text="Main navigation"/>
+
+		<tnt:SideNavigation id="sideNav" width="17rem" itemSelect="onItemSelect" selectedKey="home" design="Plain">
+			<tnt:NavigationList>
+				<tnt:NavigationListItem text="Home" icon="sap-icon://home" key="home"/>
+				<tnt:NavigationListItem <Link
+				text="User"
+                icon="sap-icon://SAP-icons-TNT/user" 
+                key="user"
+				target="_blank"
+				href="http://www.sap.com" /> />
+			
+			</tnt:NavigationList>
+
+	
+		</tnt:SideNavigation>
+	</ResponsivePopover>
+</core:FragmentDefinition>

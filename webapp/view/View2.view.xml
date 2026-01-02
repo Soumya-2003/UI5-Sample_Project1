@@ -1,0 +1,21 @@
+<mvc:View
+    controllerName="my.app.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <App>
+        <pages>
+            <Page title="My First UI5 Page">
+                <content>
+                    <Text text="Hello, welcome to my SAP UI5 application!" />
+                    <Button text="Click Me" press="onButtonClick" />
+                </content>
+                <footer>
+                    <OverflowToolbar>
+                        <ToolbarSpacer />
+                        <Button text="Accept" type="Accept" />
+                    </OverflowToolbar>
+                </footer>
+            </Page>
+        </pages>
+    </App>
+</mvc:View>
