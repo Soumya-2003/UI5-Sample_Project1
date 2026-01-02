@@ -92,12 +92,12 @@
       ],
       "targets": {
         "TargetView1": {
-          "id": "View1",
-          "name": "View1"
+          "name": "View1",
+           "viewLevel": 1
         },
         "TargetUser": {
           "viewName": "View2",
-          "viewId": "View2",
+          "id": "View2",
           "viewLevel": 2
         }
       }
