@@ -8,10 +8,24 @@
 	xmlns:core="sap.ui.core"
 	height="100%">
     <Page id="page" title="{i18n>title}">
-	<HBox class="sapUiSmallMargin">
-		<Title text="Order Details" level="H2"/>
-		<Button icon="sap-icon://overflow" text="Theme" press="onOpenThemeMenu" />
-	</HBox>
+	<customHeader>
+				<OverflowToolbar>
+					<Button icon="sap-icon://menu2" press=".onToggleSideNav" />
+					<Title text="Order Details" level="H2" />
+					<ToolbarSpacer />
+					<Button icon="sap-icon://search"/>
+					<Button icon="sap-icon://bell"/>
+					<OverflowToolbar class="sapUiMediumMarginTop">
+			<ToolbarSpacer/>
+			<Button class="theme-button" text="Theme" press="onOpenThemeMenu" />
+		</OverflowToolbar>
+					<Avatar initials="SN" displaySize="XS" />
+				</OverflowToolbar>
+			</customHeader>
+		
+		
+	
+		
 	
 
     <VBox class="sapUiSmallMargin">
@@ -34,13 +48,19 @@
             
 	    </f:SimpleForm>
     </VBox>
-    <HBox class="hbox-button">
-		<Button text="Submit"
-				press="onPress"
-				class="sapUiSmallMarginBottom"
-		>
-		</Button>
-	</HBox>
+    <!-- <HBox class="hbox-button"> -->
+		
+		<FlexBox
+				height="100px"
+				alignItems="Start"
+				justifyContent="Center">
+				<Button text="Submit"
+						press="onPress"
+						class="sapUiSmallMarginBottom"
+				>
+				</Button>
+			</FlexBox>
+	<!-- </HBox> -->
     
     <Table
 		items="{
