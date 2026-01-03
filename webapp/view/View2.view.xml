@@ -103,8 +103,6 @@
                     <Text text="{employeeDetailModel>Phone}" />
 					<Text text="{employeeDetailModel>Department}" />
 					<Text text="{ path: 'employeeDetailModel>Level', formatter: 'Formatter.sLevelCheck'}" />
-					<!-- <Text text="{ path: 'employeeDetailModel>Level', formatter: 'Formatter.sLevelCheck' }"/> -->
-
 				</cells>
 			</ColumnListItem>
 		</items>

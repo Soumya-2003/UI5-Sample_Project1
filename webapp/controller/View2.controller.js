@@ -5,7 +5,6 @@ sap.ui.define([
 	"sample/project1/helper/themeHelper"
 ], (Controller, Fragment, MessageBox, themeHelper) => {
 	"use strict";
-	// var ButtonType = library.ButtonType;
 	return Controller.extend("sample.project1.controller.View2", {
 		onInit: function () {
 			themeHelper.initTheme();
