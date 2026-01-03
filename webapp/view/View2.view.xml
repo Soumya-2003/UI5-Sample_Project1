@@ -1,19 +1,119 @@
 <mvc:View
 	height="100%"
-	controllerName="sap.ui.layout.sample.SimpleForm354.Page"
+	controllerName="sample.project1.controller.View2"
 	xmlns:mvc="sap.ui.core.mvc"
-	xmlns="sap.m">
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:mdc="sap.ui.mdc"
+    xmlns:mdct="sap.ui.mdc.table"
+	xmlns:core="sap.ui.core"
+	xmlns:mdcvh="sap.ui.mdc.valuehelp"
+	core:require="{ Formatter: 'sample/project1/model/formatter'}"
+>
 	<Page
 		id="page"
+		title="User"
 		showHeader="true" >
 		<customHeader>
-			<Bar>
-				<contentRight>
-					<Button id="edit" text="Edit" enabled="false" press="handleEditPress" />
-					<Button id="save" text="Save" type="Emphasized" visible="false" press="handleSavePress" />
-					<Button id="cancel" text="Cancel" visible="false" press="handleCancelPress" />
-				</contentRight>
-			</Bar>
+				<OverflowToolbar>
+					<Button icon="sap-icon://menu2" press="onToggleSideNav" />
+					<Title text="Employee Details" level="H1" />
+					<ToolbarSpacer />
+					<Button icon="sap-icon://search"/>
+					<Button icon="sap-icon://bell"/>
+					<Button class="theme-button" text="Theme" press="onOpenThemeMenu" />
+					<Avatar initials="SN" displaySize="XS" />
+				</OverflowToolbar>
 		</customHeader>
+	<VBox class="sapUiSmallMargin">
+		<f:SimpleForm id="SimpleFormDisplay354"
+			editable="true"
+			layout="ResponsiveGridLayout"
+			title="Order Entry Form"
+            singleContainerFullSize="false"
+	    >
+            <f:content>
+				<Label text="Employee ID" />
+                <Input type="Number" value="{employeeDetailModel>/EmployeeID}" />
+                <Label text="Name" />
+                <Input  value="{employeeDetailModel>/Name}"/>
+                <Label text="Address" />
+                <Input value="{employeeDetailModel>/Address}" />
+                <Label text="Phone No." />
+                <Input type="Number" value="{employeeDetailModel>/Phone}" />
+				<Label text="Department" />
+                <Input value="{employeeDetailModel>/Department}" 
+				id="departmentInput"
+				type="Text"
+				showValueHelp="true"
+				valueHelpRequest="onValueHelpRequest" />
+                <Label text="Level" />
+                <Input value="{employeeDetailModel>/Level}" />
+            </f:content>
+	    </f:SimpleForm>
+
+    </VBox>
+	<!-- <Button xmlns="sap.m" id="btnInFragment" text="HelloWorld"/> -->
+	<!-- <VBox xmlns="sap.m">
+		<Label text="My Label inside an XML fragment"/>
+		<Button id="btnInFragment" text="Hello World" press="doSomething"/>
+		<Button text="{/someText}"/>
+	</VBox> -->
+	<FlexBox
+		height="100px"
+		alignItems="Start"
+		justifyContent="Center">
+		<Button text="Submit" press="addEmployee" class="sapUiSmallMarginBottom"></Button>		
+	</FlexBox>
+
+	<Table
+		items="{
+			path: 'employeeDetailModel>/EmployeeList'
+		}">
+		<headerToolbar>
+			<OverflowToolbar>
+				<Title text="Employee List" level="H2"/>
+				<ToolbarSpacer/>
+				<!-- <CheckBox text="Fixed Layout" selected="true" select="onCheckBoxSelect"/> -->
+				<!-- <Button text="Open Dialog" press="onOpenPressed"/> -->
+			</OverflowToolbar>
+		</headerToolbar>
+		<columns>
+			<Column>
+				<Text text="Employee ID" />
+			</Column>
+			<Column>
+				<Text text="Name" />
+			</Column>
+			<Column>
+				<Text text="Address" />
+			</Column>
+            <Column>
+				<Text text="Phone" />
+			</Column>
+			<Column>
+				<Text text="Department" />
+			</Column>
+			<Column>
+				<Text text="Level" />
+			</Column>
+
+		</columns>
+		<items>
+			<ColumnListItem vAlign="Middle" type="Navigation">
+				<cells>
+					<Text text="{employeeDetailModel>EmployeeID}" wrapping="false" />
+					<Text text="{employeeDetailModel>Name}" wrapping="false"/>
+					<Text text="{employeeDetailModel>Address}" />
+                    <Text text="{employeeDetailModel>Phone}" />
+					<Text text="{employeeDetailModel>Department}" />
+					<Text text="{ path: 'employeeDetailModel>Level', formatter: 'Formatter.sLevelCheck'}" />
+					<!-- <Text text="{ path: 'employeeDetailModel>Level', formatter: 'Formatter.sLevelCheck' }"/> -->
+
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
 	</Page>
 </mvc:View>

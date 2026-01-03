@@ -51,7 +51,7 @@
 						class="sapUiSmallMarginBottom"
 				>
 				</Button>
-			</FlexBox>
+		</FlexBox>
 	<!-- </HBox> -->
     
     <Table
