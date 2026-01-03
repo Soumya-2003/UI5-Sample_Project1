@@ -55,6 +55,10 @@
       "orderDetailModel": {
         "type": "sap.ui.model.json.JSONModel",
         "uri": "model/orderData.json"
+      },
+      "employeeDetailModel": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "model/employeeData.json"
       }
     },
     "resources": {
@@ -79,7 +83,7 @@
       "routes": [
         {
           "name": "RouteView1",
-          "pattern": ":?query:",
+          "pattern": "",
           "target": [
             "TargetView1"
           ]
@@ -87,17 +91,18 @@
         {
           "name": "RouteUser",
           "pattern": "user",
-          "target": "TargetUser"
+          "target": ["TargetUser"]
         }
       ],
       "targets": {
         "TargetView1": {
-          "name": "View1",
+          "viewName": "View1",
+          "viewId": "view1",
            "viewLevel": 1
         },
         "TargetUser": {
           "viewName": "View2",
-          "id": "View2",
+           "viewId": "view2",
           "viewLevel": 2
         }
       }
