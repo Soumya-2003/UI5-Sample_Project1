@@ -1,7 +1,18 @@
 sap.ui.define([], () => {
-    "use strict";
+	"use strict";
 
-    return {
-        
-    };
+	return {
+		sLevelCheck(level) {
+			switch (level) {
+				case "b":
+					return "Beginner";
+				case "p":
+					return "Professional";
+				case "e":
+					return "Expert";
+				default:
+					return "Novice";
+			}
+		}
+	};
 });
