@@ -1,0 +1,15 @@
+{
+  "EmployeeID": "",
+  "Name": "",
+  "Address": "",
+  "Phone": "",
+  "Department": "",
+  "Level": "",
+  "EmployeeList": [],
+  "DepartmentList": [
+    { "key": "HR", "text": "Human Resources" },
+    { "key": "IT", "text": "Information Technology" },
+    { "key": "FIN", "text": "Finance" },
+    { "key": "OPS", "text": "Operations" }
+  ]
+}
