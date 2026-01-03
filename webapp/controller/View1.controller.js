@@ -32,26 +32,21 @@ sap.ui.define([
             }
         },
         onItemSelect: function (oEvent) {
-            var oItem = oEvent.getParameter("item");
-            var sKey = oItem.getKey();
-            // var oNavCon = this.byId("pageContainer");
-
-            // const sKey = oEvent.getParameter("item").getKey();
-            const oRouter = this.getOwnerComponent().getRouter();
-
-            if (sKey === "home") {
-                oRouter.navTo("RouteView1");
-            }
-
+            var sKey = oEvent.getParameter("item").getKey();
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             if (sKey === "user") {
-                oRouter.navTo("RouteUser");
+               oRouter.navTo("RouteUser", {});
             }
 
             this._oPopover.close();
 
-            if (this._oPopover.isOpen()) {
-                this._oPopover.close();
-            }
+            // if (this._oPopover.isOpen()) {
+            //     this._oPopover.close();
+            // }
+
+            
+            
+
         },
         onPress: function (oEvent) {
             const oModel = this.getView().getModel("orderDetailModel");
