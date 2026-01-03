@@ -123,7 +123,7 @@ sap.ui.define([
 		},
 
 		onDepartmentConfirm: function () {
-			var oSelectedItem = oEvent.getParameter("selectedItem"),
+			var oSelectedItem = oEvent.getParameter("selectedItem");
 
 
 			if (oSelectedItem) {

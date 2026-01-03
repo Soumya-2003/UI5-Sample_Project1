@@ -6,7 +6,6 @@ sap.ui.define([
     "sample/project1/helper/themeHelper"
 ], (Controller, JSONModel, MessageBox, Fragment, themeHelper) => {
     "use strict";
-    // var ButtonType = library.ButtonType;
     return Controller.extend("sample.project1.controller.View1", {
         onInit: function () {
             themeHelper.initTheme();
@@ -43,9 +42,6 @@ sap.ui.define([
             // if (this._oPopover.isOpen()) {
             //     this._oPopover.close();
             // }
-
-            
-            
 
         },
         onPress: function (oEvent) {
