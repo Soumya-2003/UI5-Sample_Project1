@@ -122,13 +122,13 @@ sap.ui.define([
 
 		},
 
-		onDepartmentConfirm: function () {
+		onDepartmentConfirm: function (oEvent) {
 			var oSelectedItem = oEvent.getParameter("selectedItem");
 
 
 			if (oSelectedItem) {
-				var sValue = oSelectedItem.getTitle();
-				this.byId("departmentInput").setValue(sValue);
+				var sDept = oSelectedItem.getBindingContext("employeeDetailModel").getProperty("text");;
+				this.getView().getModel("employeeDetailModel").setProperty("/Department", sDept);
 			}
 			oEvent.getSource().close();
 		},
