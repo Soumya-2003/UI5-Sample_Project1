@@ -8,8 +8,8 @@
 		cancel="onDepartmentCancel"
 		items="{employeeDetailModel>/DepartmentList}">
 		<StandardListItem
-			title="{employeeDetailModel>key}"
-			description="{employeeDetailModel>text}"
+			title="{employeeDetailModel>text}"
+			description="{employeeDetailModel>key}"
 			 />
 	</SelectDialog>
 </core:FragmentDefinition>

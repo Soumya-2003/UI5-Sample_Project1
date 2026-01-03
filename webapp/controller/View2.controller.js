@@ -91,7 +91,7 @@ sap.ui.define([
 			if (!this._pDialog) {
 				this._pDialog = Fragment.load({
 					id: oView.getId(),
-					name: "sap.m.sample.SelectDialog.Dialog",
+					name: "sample.project1.view.Dialog",
 					controller: this
 				}).then(function (oDialog) {
 					oDialog.setModel(oView.getModel());
@@ -105,46 +105,33 @@ sap.ui.define([
 			}.bind(this));
 
 		},
-		onDialogClose: function (oEvent) {
-			var aContexts = oEvent.getParameter("selectedContexts");
-			if (aContexts && aContexts.length) {
-				MessageToast.show("You have chosen " + aContexts.map(function (oContext) { return oContext.getObject().Name; }).join(", "));
-			} else {
-				MessageToast.show("No new item was selected.");
-			}
-			oEvent.getSource().getBinding("items").filter([]);
-		},
 		onValueHelpRequest: function () {
 			var oView = this.getView();
-
-			if (!this._pValueHelpDialog) {
-				this._pValueHelpDialog = Fragment.load({
-					id: oView.getId(),
+			if (!this._oDeptDialog) {
+				Fragment.load({
 					name: "sample.project1.view.Dialog",
 					controller: this
-				}).then(function (oValueHelpDialog) {
-					this._pValueHelpDialog = oValueHelpDialog;
-					this.getView().addDependent(oValueHelpDialog);
-					oValueHelpDialog.open();
+				}).then(function (oDialog) {
+					this._oDeptDialog = oDialog;
+					oView.addDependent(oDialog);
+					oDialog.open();
 				}.bind(this));
 			}
-		},
-		onDepartmentConfirm: function () {
-			var oItem = oEvent.getParameter("selectedItem");
-			if (oItem) {
-				this.getView().getModel("employeeDetailModel")
-					.setProperty("/Department", oItem.getTitle());
+			else{
+				this._oDeptDialog.open();
 			}
-		},
-		onDepartmentCancel: function(){
-			this.oValueHelpDialog.close();
-		},
-		onSearch: function (oEvent) {
-			var sValue = oEvent.getParameter("value");
-			var oFilter = new Filter("Name", FilterOperator.Contains, sValue);
-			var oBinding = oEvent.getParameter("itemsBinding");
-			oBinding.filter([oFilter]);
+
 		},
 
+		onDepartmentConfirm: function () {
+			var oSelectedItem = oEvent.getParameter("selectedItem"),
+
+
+			if (oSelectedItem) {
+				var sValue = oSelectedItem.getTitle();
+				this.byId("departmentInput").setValue(sValue);
+			}
+			oEvent.getSource().close();
+		},
 	});
 });

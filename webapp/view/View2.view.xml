@@ -54,12 +54,6 @@
 	    </f:SimpleForm>
 
     </VBox>
-	<!-- <Button xmlns="sap.m" id="btnInFragment" text="HelloWorld"/> -->
-	<!-- <VBox xmlns="sap.m">
-		<Label text="My Label inside an XML fragment"/>
-		<Button id="btnInFragment" text="Hello World" press="doSomething"/>
-		<Button text="{/someText}"/>
-	</VBox> -->
 	<FlexBox
 		height="100px"
 		alignItems="Start"
