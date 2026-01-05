@@ -7,9 +7,9 @@
   "Level": "",
   "EmployeeList": [],
   "DepartmentList": [
-    { "key": "HR", "text": "Human Resources" },
-    { "key": "IT", "text": "Information Technology" },
-    { "key": "FIN", "text": "Finance" },
-    { "key": "OPS", "text": "Operations" }
+    { "deptName": "Human Resources" },
+    { "deptName": "Information Technology" },
+    { "deptName": "Finance" },
+    { "deptName": "Operations" }
   ]
 }
