@@ -30,7 +30,7 @@
 		<f:SimpleForm id="SimpleFormDisplay354"
 			editable="true"
 			layout="ResponsiveGridLayout"
-			title="Order Entry Form"
+			title="Employee Entry Form"
             singleContainerFullSize="false"
 	    >
             <f:content>
@@ -47,6 +47,7 @@
 				id="departmentInput"
 				type="Text"
 				showValueHelp="true"
+				valueHelpOnly="true"
 				valueHelpRequest="onValueHelpRequest" />
                 <Label text="Level" />
                 <Input value="{employeeDetailModel>/Level}" />
@@ -62,6 +63,7 @@
 	</FlexBox>
 
 	<Table
+		id="table"
 		items="{
 			path: 'employeeDetailModel>/EmployeeList'
 		}">
@@ -70,8 +72,14 @@
 				<Title text="Employee List" level="H2"/>
 				<ToolbarSpacer/>
 				<!-- <CheckBox text="Fixed Layout" selected="true" select="onCheckBoxSelect"/> -->
-				<!-- <Button text="Open Dialog" press="onOpenPressed"/> -->
+				<Button icon="sap-icon://sorting-ranking"
+							tooltip="Sort ascending across Employee Name"
+							press="sortEmployeeName"/>
+				<Button icon="sap-icon://decline"
+						tooltip="Clear all sortings"
+						press="clearAllSortings"/>
 			</OverflowToolbar>
+			
 		</headerToolbar>
 		<columns>
 			<Column>
