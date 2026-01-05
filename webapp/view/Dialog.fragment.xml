@@ -7,9 +7,6 @@
 		confirm="onDepartmentConfirm"
 		cancel="onDepartmentCancel"
 		items="{employeeDetailModel>/DepartmentList}">
-		<StandardListItem
-			title="{employeeDetailModel>text}"
-			description="{employeeDetailModel>key}"
-			 />
+		<StandardListItem title="{employeeDetailModel>deptName}" />
 	</SelectDialog>
 </core:FragmentDefinition>
