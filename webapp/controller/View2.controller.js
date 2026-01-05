@@ -2,8 +2,10 @@ sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"sap/ui/core/Fragment",
 	"sap/m/MessageBox",
-	"sample/project1/helper/themeHelper"
-], (Controller, Fragment, MessageBox, themeHelper) => {
+	"sample/project1/helper/themeHelper",
+	"sap/m/MessageToast",
+	"sap/ui/model/Sorter"
+], (Controller, Fragment, MessageBox, themeHelper, MessageToast, Sorter) => {
 	"use strict";
 	return Controller.extend("sample.project1.controller.View2", {
 		onInit: function () {
@@ -29,13 +31,13 @@ sap.ui.define([
 				this._oPopover.openBy(oButton);
 			}
 		},
+
 		onItemSelect: function (oEvent) {
 			var sKey = oEvent.getParameter("item").getKey();
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			if (sKey === "home") {
 				oRouter.navTo("RouteView1", {});
 			}
-
 			this._oPopover.close();
 		},
 
@@ -43,17 +45,24 @@ sap.ui.define([
 			const oModel = this.getView().getModel("employeeDetailModel");
 			const aEmployeeData = oModel.getProperty("/EmployeeList");
 
-			const oEmployeeData = {
-				EmployeeID: oModel.getProperty("/EmployeeID"),
-				Name: oModel.getProperty("/Name"),
-				Address: oModel.getProperty("/Address"),
-				Phone: oModel.getProperty("/Phone"),
-				Department: oModel.getProperty("/Department"),
-				Level: oModel.getProperty("/Level")
+			const EmployeeID = oModel.getProperty("/EmployeeID");
+			const Name = oModel.getProperty("/Name");
+			const Address = oModel.getProperty("/Address");
+			const Phone = oModel.getProperty("/Phone");
+			const Department = oModel.getProperty("/Department");
+			const Level = oModel.getProperty("/Level");
+
+			if (!EmployeeID || !Name || !Address || !Phone || !Department || !Level) {
+				sap.m.MessageBox.warning("Please fill all fields");
+				return;
 			}
+
+			const oEmployeeData = { EmployeeID, Name, Address, Phone, Department, Level };
 
 			aEmployeeData.push(oEmployeeData);
 			oModel.refresh(true);
+
+			MessageBox.success(`${Name} is added as an Employee`);
 
 			oModel.setProperty("/EmployeeID", "");
 			oModel.setProperty("/Name", "");
@@ -83,54 +92,39 @@ sap.ui.define([
 			var sTheme = oEvent.getParameter("item").getKey();
 			themeHelper.setTheme(sTheme);
 		},
-		onSelectDialogPress: function (oEvent) {
-			var oButton = oEvent.getSource(),
-				oView = this.getView();
 
-			if (!this._pDialog) {
-				this._pDialog = Fragment.load({
-					id: oView.getId(),
-					name: "sample.project1.view.Dialog",
-					controller: this
-				}).then(function (oDialog) {
-					oDialog.setModel(oView.getModel());
-					return oDialog;
-				});
-			}
-
-			this._pDialog.then(function (oDialog) {
-				this._configDialog(oButton, oDialog);
-				oDialog.open();
-			}.bind(this));
-
-		},
+		// 
 		onValueHelpRequest: function () {
 			var oView = this.getView();
-			if (!this._oDeptDialog) {
-				Fragment.load({
-					name: "sample.project1.view.Dialog",
-					controller: this
-				}).then(function (oDialog) {
-					this._oDeptDialog = oDialog;
-					oView.addDependent(oDialog);
-					oDialog.open();
-				}.bind(this));
-			}
-			else{
-				this._oDeptDialog.open();
-			}
-
+			Fragment.load({
+				name: "sample.project1.view.Dialog",
+				controller: this
+			}).then(function (oDialog) {
+				this._valueHelpDialog = oDialog;
+				oView.addDependent(oDialog);
+				oDialog.open();
+			}.bind(this));
+			this._oDeptDialog.open();
 		},
 
 		onDepartmentConfirm: function (oEvent) {
 			var oSelectedItem = oEvent.getParameter("selectedItem");
 
+			const sDept = oSelectedItem.getTitle();
+			this.getView().getModel("employeeDetailModel").setProperty("/Department", sDept);
 
-			if (oSelectedItem) {
-				var sDept = oSelectedItem.getBindingContext("employeeDetailModel").getProperty("text");;
-				this.getView().getModel("employeeDetailModel").setProperty("/Department", sDept);
-			}
-			oEvent.getSource().close();
+			MessageToast.show(sDept + " is selected");
 		},
+
+		sortEmployeeName: function(oEvent) {
+			const oView = this.getView();
+			const oTable = oView.byId("table");
+			oTable.getBinding("items").sort(new Sorter("Name", false));
+		},
+
+		clearAllSortings: function(){
+			const oTable = this.byId("table");
+			oTable.getBinding("items").sort(null);
+		}
 	});
 });
