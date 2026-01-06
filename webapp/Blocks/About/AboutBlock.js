@@ -6,15 +6,15 @@ sap.ui.define([
 
 	var ViewType = library.mvc.ViewType;
 
-	var AboutBlock = BlockBase.extend("Blocks.About.About", {
+	var AboutBlock = BlockBase.extend("sample.project1.Blocks.About.AboutBlock", {
 		metadata: {
 			views: {
 				Collapsed: {
-					viewName: "Blocks.About.About",
+					viewName: "sample.project1.Blocks.About.AboutBlock",
 					type: ViewType.XML
 				},
 				Expanded: {
-					viewName: "Blocks.About.About",
+					viewName: "sample.project1.Blocks.About.AboutBlock",
 					type: ViewType.XML
 				}
 			}

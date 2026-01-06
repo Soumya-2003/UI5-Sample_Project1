@@ -1,0 +1,11 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:forms="sap.ui.layout.form" xmlns="sap.m">
+	<forms:SimpleForm editable="false" layout="ColumnLayout">
+
+		<Text text="
+• Languages and Databases: Java (OOP, Spring Boot), C++ (STL), Python (Flask, Automation Scripts), Bash.
+• DevOps Tools and CI/CD: Jenkins, GitHub Actions, ArgoCD, SonarQube, OWASP Dependency Check, Trivy.
+• Containerization and Orchestration: Docker, Kubernetes (EKS, Helm), DockerHub.
+• Tools and Technologies: Git, GitHub, Postman, Linux, Next.js, REST APIs,Terraform, AWS (EC2, EKS, IAM, ECR)"/> 
+
+	</forms:SimpleForm>
+</mvc:View>

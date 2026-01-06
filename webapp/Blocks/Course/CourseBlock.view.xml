@@ -1,0 +1,12 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:forms="sap.ui.layout.form" xmlns="sap.m">
+	<forms:SimpleForm editable="false" layout="ColumnLayout">
+
+		<Text text="Data Structures
+• Software Methodology
+• Algorithms Analysis
+• Database Management
+• OOPs (Java Based)
+• DevOps Technology"/> 
+
+	</forms:SimpleForm>
+</mvc:View>

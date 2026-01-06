@@ -5,7 +5,9 @@
 	xmlns="sap.uxap"
 	xmlns:layout="sap.ui.layout"
 	xmlns:m="sap.m"
-	xmlns:about="Blocks.About"
+	xmlns:about="sample.project1.Blocks.About"
+	xmlns:course="sample.project1.Blocks.Course"
+	xmlns:technical_skill="sample.project1.Blocks.Skill"
 >
 	<ObjectPageLayout id="ObjectPageLayout"
 		enableLazyLoading="true"
@@ -16,13 +18,13 @@
 		<headerTitle>
 			<ObjectPageDynamicHeaderTitle>
 				<expandedHeading>
-					<m:Title text="Soumyadeep Mallick" wrapping="true"/>
+					<m:Title id="welcomeText" text="" wrapping="true"/>
 				</expandedHeading>
 
 				<snappedHeading>
 					<m:FlexBox fitContainer="true" alignItems="Center">
 						<m:Avatar src="images/linked-profile.jpeg" class="sapUiTinyMarginEnd"/>
-						<m:Title text="Soumyadeep Mallick" wrapping="true" />
+						<m:Title id="welcomeUser" text="" wrapping="true" />
 					</m:FlexBox>
 				</snappedHeading>
 
@@ -56,13 +58,43 @@
 		<sections>
 			<ObjectPageSection titleUppercase="false" id="goals" title="About Me">
 				<subSections>
-				<ObjectPageSubSection id="goalsSS1" titleUppercase="false">
+				<ObjectPageSubSection id="about" titleUppercase="false">
 					<blocks>
-						<about:About id="AboutBlock"/>
+						<about:AboutBlock id="AboutBlock"/>
 					</blocks>
 				</ObjectPageSubSection>
 			</subSections>
 			</ObjectPageSection>
+
+			<ObjectPageSection titleUppercase="false" id="coursework" title="Coursework">
+				<subSections>
+					<ObjectPageSubSection id="courses" titleUppercase="false">
+						<blocks>
+							<course:CourseBlock id="CourseBlock"/>
+						</blocks>
+					</ObjectPageSubSection>
+
+				</subSections>
+			</ObjectPageSection>
+
+			<ObjectPageSection titleUppercase="false" id="skill" title="Skills">
+				<subSections>
+					<ObjectPageSubSection id="Technical" title="Technical Skill" titleUppercase="false">
+						<blocks>
+							<technical_skill:TechnicalSkill id="TechnicalSkill"/>
+						</blocks>
+					</ObjectPageSubSection>
+
+					<ObjectPageSubSection id="soft" title="Soft Skill" titleUppercase="false">
+						<blocks>
+							<technical_skill:SoftSkill id="SoftSkill"/>
+						</blocks>
+					</ObjectPageSubSection>
+
+					
+				</subSections>
+			</ObjectPageSection>
+
 		</sections>
 
 
