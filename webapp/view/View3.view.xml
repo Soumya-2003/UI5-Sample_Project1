@@ -58,7 +58,7 @@
 				<subSections>
 				<ObjectPageSubSection id="goalsSS1" titleUppercase="false">
 					<blocks>
-						<about:AboutBlock id="AboutBlock"/>
+						<about:About id="AboutBlock"/>
 					</blocks>
 				</ObjectPageSubSection>
 			</subSections>
