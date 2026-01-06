@@ -11,8 +11,11 @@ sap.ui.define([
             this.getOwnerComponent().getRouter().getRoute("WelcomePage").attachPatternMatched(this.onRouteMatched, this);
         },
         onRouteMatched: function (oEvent) {
-            const sName = decodeURIComponent(oEvent.getParameter("arguments").userName);
-            this.byId("welcomeText").setText("Welcome! " + sName);
+            const sFullName = decodeURIComponent(oEvent.getParameter("arguments").userName);
+            let sfirstName = sFullName.trim().split(" ")[0];
+            this.byId("welcomeText").setText("Welcome! " + sfirstName);
+            this.byId("Username").setText(sFullName);
+
         },
         onNavBack: function () {
             var oHistory = History.getInstance();
