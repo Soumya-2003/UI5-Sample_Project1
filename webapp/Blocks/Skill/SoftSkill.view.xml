@@ -1,9 +1,0 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:forms="sap.ui.layout.form" xmlns="sap.m">
-	<forms:SimpleForm editable="false" layout="ColumnLayout">
-
-    <Text text="• Agile Collaboration and Team Leadership."/>
-    <Text text="• Effective Communication and Rapid Learning."/>
-    <Text text="• Documentation and Troubleshooting."/>
-
-	</forms:SimpleForm>
-</mvc:View>
