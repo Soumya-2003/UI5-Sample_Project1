@@ -1,0 +1,34 @@
+<mvc:View
+	height="100%"
+	controllerName="sample.project1.controller.View3"
+	xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:mdc="sap.ui.mdc"
+    xmlns:mdct="sap.ui.mdc.table"
+	xmlns:core="sap.ui.core"
+	
+>
+	<Page
+		id="page"
+		title="Welcome"
+		showHeader="true" >
+		<customHeader>
+				<OverflowToolbar>
+					<Button icon="sap-icon://nav-back" tooltip="Back" press="onNavBack"/>
+					<Button icon="sap-icon://menu2" press="onToggleSideNav" />
+					<Title text="Employee Details" level="H1" />
+					<ToolbarSpacer />
+					<Button icon="sap-icon://search"/>
+					<Button icon="sap-icon://bell"/>
+					<Button class="theme-button" text="Theme" press="onOpenThemeMenu" />
+					<Avatar initials="SN" displaySize="XS" />
+				</OverflowToolbar>
+		</customHeader>
+
+        <Text text="Welcome! User" />
+
+	
+	</Page>
+</mvc:View>

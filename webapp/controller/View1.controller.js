@@ -36,13 +36,11 @@ sap.ui.define([
             if (sKey === "user") {
                oRouter.navTo("RouteUser", {});
             }
+            else if (sKey === "welcome") {
+				oRouter.navTo("WelcomePage", {});
+			}
 
             this._oPopover.close();
-
-            // if (this._oPopover.isOpen()) {
-            //     this._oPopover.close();
-            // }
-
         },
         onPress: function (oEvent) {
             const oModel = this.getView().getModel("orderDetailModel");

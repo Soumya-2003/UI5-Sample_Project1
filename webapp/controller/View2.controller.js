@@ -1,15 +1,27 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
+	"sap/ui/core/routing/History",
 	"sap/ui/core/Fragment",
 	"sap/m/MessageBox",
 	"sample/project1/helper/themeHelper",
 	"sap/m/MessageToast",
-	"sap/ui/model/Sorter"
-], (Controller, Fragment, MessageBox, themeHelper, MessageToast, Sorter) => {
+	"sap/ui/model/Sorter",
+], (Controller, History, Fragment, MessageBox, themeHelper, MessageToast, Sorter) => {
 	"use strict";
 	return Controller.extend("sample.project1.controller.View2", {
 		onInit: function () {
 			themeHelper.initTheme();
+		},
+		onNavBack: function () {
+			var oHistory = History.getInstance();
+			var sPreviousHash = oHistory.getPreviousHash();
+
+			if (sPreviousHash !== undefined) {
+				window.history.go(-1);
+			} else {
+				var oRouter = this.getOwnerComponent().getRouter();
+				oRouter.navTo("RouteView1", {});
+			}
 		},
 		onToggleSideNav: async function (oEvent) {
 			var oButton = oEvent.getSource(),
@@ -37,6 +49,9 @@ sap.ui.define([
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			if (sKey === "home") {
 				oRouter.navTo("RouteView1", {});
+			}
+			else if (sKey === "welcome") {
+				oRouter.navTo("WelcomePage", {});
 			}
 			this._oPopover.close();
 		},
@@ -116,13 +131,13 @@ sap.ui.define([
 			MessageToast.show(sDept + " is selected");
 		},
 
-		sortEmployeeName: function(oEvent) {
+		sortEmployeeName: function (oEvent) {
 			const oView = this.getView();
 			const oTable = oView.byId("table");
 			oTable.getBinding("items").sort(new Sorter("Name", false));
 		},
 
-		clearAllSortings: function(){
+		clearAllSortings: function () {
 			const oTable = this.byId("table");
 			oTable.getBinding("items").sort(null);
 		}

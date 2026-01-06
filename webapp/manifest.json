@@ -91,19 +91,30 @@
         {
           "name": "RouteUser",
           "pattern": "user",
-          "target": ["TargetUser"]
+          "target": [
+            "TargetUser"
+          ]
+        },
+        {
+          "name": "WelcomePage",
+          "pattern": "welcome",
+          "target": [
+            "WelcomeUser"
+          ]
         }
       ],
       "targets": {
         "TargetView1": {
           "viewName": "View1",
-          "viewId": "view1",
-           "viewLevel": 1
+          "viewId": "view1"
         },
         "TargetUser": {
           "viewName": "View2",
-           "viewId": "view2",
-          "viewLevel": 2
+          "viewId": "view2"
+        },
+        "WelcomeUser": {
+          "viewName": "View3",
+          "viewId": "view3"
         }
       }
     },

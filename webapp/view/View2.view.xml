@@ -17,6 +17,7 @@
 		showHeader="true" >
 		<customHeader>
 				<OverflowToolbar>
+					<Button icon="sap-icon://nav-back" tooltip="Back" press="onNavBack"/>
 					<Button icon="sap-icon://menu2" press="onToggleSideNav" />
 					<Title text="Employee Details" level="H1" />
 					<ToolbarSpacer />
@@ -26,6 +27,11 @@
 					<Avatar initials="SN" displaySize="XS" />
 				</OverflowToolbar>
 		</customHeader>
+
+		<l:VerticalLayout class="sapUiContentPadding" width="50%">
+			<Input type="text" placeholder="Enter Name" showSuggestion="true"/>
+		</l:VerticalLayout>
+
 	<VBox class="sapUiSmallMargin">
 		<f:SimpleForm id="SimpleFormDisplay354"
 			editable="true"

@@ -15,6 +15,7 @@
 			<tnt:NavigationList>
 				<tnt:NavigationListItem text="Home" icon="sap-icon://home" key="home"/>
 				<tnt:NavigationListItem text="User" icon="sap-icon://SAP-icons-TNT/user" key="user"/>
+				<tnt:NavigationListItem text="Welcome" key="welcome"/>
 			</tnt:NavigationList>
 
 	
