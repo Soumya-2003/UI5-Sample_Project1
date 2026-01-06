@@ -2,33 +2,71 @@
 	height="100%"
 	controllerName="sample.project1.controller.View3"
 	xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m"
-    xmlns:l="sap.ui.layout"
-    xmlns:f="sap.ui.layout.form"
-    xmlns:mdc="sap.ui.mdc"
-    xmlns:mdct="sap.ui.mdc.table"
-	xmlns:core="sap.ui.core"
-	
+	xmlns="sap.uxap"
+	xmlns:layout="sap.ui.layout"
+	xmlns:m="sap.m"
+	xmlns:about="Blocks.About"
 >
-	<Page
-		id="page"
-		title="Welcome"
-		showHeader="true" >
-		<customHeader>
-				<OverflowToolbar>
-					<Button icon="sap-icon://nav-back" tooltip="Back" press="onNavBack"/>
-					<Button icon="sap-icon://menu2" press="onToggleSideNav" />
-					<Title text="Employee Details" level="H1" />
-					<ToolbarSpacer />
-					<Button icon="sap-icon://search"/>
-					<Button icon="sap-icon://bell"/>
-					<Button class="theme-button" text="Theme" press="onOpenThemeMenu" />
-					<Avatar initials="SN" displaySize="XS" />
-				</OverflowToolbar>
-		</customHeader>
+	<ObjectPageLayout id="ObjectPageLayout"
+		enableLazyLoading="true"
+		beforeNavigate="onBeforeNavigate"
+		useIconTabBar="true"
+		showTitleInHeaderContent="true"
+		upperCaseAnchorBar="false">
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+				<expandedHeading>
+					<m:Title text="Soumyadeep Mallick" wrapping="true"/>
+				</expandedHeading>
 
-        <Text text="Welcome! User" />
+				<snappedHeading>
+					<m:FlexBox fitContainer="true" alignItems="Center">
+						<m:Avatar src="images/linked-profile.jpeg" class="sapUiTinyMarginEnd"/>
+						<m:Title text="Soumyadeep Mallick" wrapping="true" />
+					</m:FlexBox>
+				</snappedHeading>
 
-	
-	</Page>
+				<expandedContent>
+					<m:Text text="DevOps"/>
+				</expandedContent>
+
+				<actions>
+					<m:Button class="theme-button" text="Theme" type="Transparent" press="onOpenThemeMenu" />
+					<m:Avatar initials="SN" displaySize="XS" />
+				</actions>
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
+
+		<headerContent>
+			<m:FlexBox wrap="Wrap" fitContainer="true" >
+				<m:Avatar class="sapUiSmallMarginEnd" src="images/linked-profile.jpeg" displaySize="L" />
+
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<m:Link text="+91 9876543210"/>
+					<m:Link text="xyz@mav.edu.in"/>
+				</layout:VerticalLayout>
+
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<m:Label text="Memari, West Bengal, India"/>
+				</layout:VerticalLayout>
+			</m:FlexBox>
+		</headerContent>
+
+
+		<sections>
+			<ObjectPageSection titleUppercase="false" id="goals" title="About Me">
+				<subSections>
+				<ObjectPageSubSection id="goalsSS1" titleUppercase="false">
+					<blocks>
+						<about:AboutBlock id="AboutBlock"/>
+					</blocks>
+				</ObjectPageSubSection>
+			</subSections>
+			</ObjectPageSection>
+		</sections>
+
+
+		<!-- <Text id="welcomeText" text="Welcome! User" /> -->
+		
+	</ObjectPageLayout>
 </mvc:View>

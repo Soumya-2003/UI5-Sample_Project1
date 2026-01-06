@@ -29,8 +29,10 @@
 		</customHeader>
 
 		<l:VerticalLayout class="sapUiContentPadding" width="50%">
-			<Input type="text" placeholder="Enter Name" showSuggestion="true"/>
+			<Input id="nameInput" type="text" placeholder="Enter Name" showSuggestion="true"/>
+			<Button text="Go To Welcome" press="onWelcome"/>
 		</l:VerticalLayout>
+		
 
 	<VBox class="sapUiSmallMargin">
 		<f:SimpleForm id="SimpleFormDisplay354"

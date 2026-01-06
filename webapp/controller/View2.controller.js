@@ -55,6 +55,13 @@ sap.ui.define([
 			}
 			this._oPopover.close();
 		},
+		onWelcome: function () {
+			const sName = this.byId("nameInput").getValue();
+
+			this.getOwnerComponent().getRouter().navTo("WelcomePage", {
+				userName: sName
+			});
+		},
 
 		addEmployee: function () {
 			const oModel = this.getView().getModel("employeeDetailModel");

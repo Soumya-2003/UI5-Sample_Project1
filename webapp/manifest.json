@@ -97,7 +97,7 @@
         },
         {
           "name": "WelcomePage",
-          "pattern": "welcome",
+          "pattern": "welcome/{userName}",
           "target": [
             "WelcomeUser"
           ]
