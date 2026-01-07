@@ -34,13 +34,11 @@
 				title="Employees"
 				backgroundDesign="List"
 				showNavButton="true"
-				navButtonPress=".onPressMasterBack">
+				navButtonPress="onPressMasterBack">
 				<List items="{departmentModel>/selectedDepartment/employees}" itemPress="onEmployeePress">
-					<!-- <items> -->
 						<StandardListItem title="{departmentModel>name}"
 									type="Active" 
 						/>
-					<!-- </items> -->
 				</List>
 			</Page>
 		</masterPages>

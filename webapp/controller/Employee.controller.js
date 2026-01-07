@@ -1,10 +1,8 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "sap/m/MessageToast",
     "sap/ui/Device",
     "sap/base/Log",
-    "sap/ui/model/json/JSONModel"
-], (Controller, MessageToast, Device, Log, JSONModel) => {
+], (Controller, Device, Log) => {
     "use strict";
     return Controller.extend("sample.project1.controller.Employee", {
         onInit: function () {
@@ -16,7 +14,7 @@ sap.ui.define([
                 'tablet': 'tablet-icon.png',
                 'icon': 'desktop.ico'
             });
-            
+
             var oSplitApp = this.getSplitAppObj();
             oSplitApp.toMaster(this.createId("master"));
             oSplitApp.toDetail(this.createId("detail"));
