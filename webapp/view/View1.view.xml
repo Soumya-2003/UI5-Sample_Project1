@@ -7,97 +7,128 @@
     xmlns:mdct="sap.ui.mdc.table"
 	xmlns:core="sap.ui.core"
 	height="100%">
-    <Page id="page" title="{i18n>title}">
-	<customHeader>
-				<OverflowToolbar>
-					<Button icon="sap-icon://menu2" press="onToggleSideNav" />
-					<Title text="Order Details" level="H2" />
-					<ToolbarSpacer />
-					<Button icon="sap-icon://search"/>
-					<Button icon="sap-icon://bell"/>
-					<Button class="theme-button" text="Theme" press="onOpenThemeMenu" />
-					<Avatar initials="SN" displaySize="XS" />
-				</OverflowToolbar>
-	</customHeader>
-
-    <VBox class="sapUiSmallMargin">
-		<f:SimpleForm id="SimpleFormDisplay354"
-			editable="false"
-			layout="ResponsiveGridLayout"
-			title="Order Entry Form"
-            singleContainerFullSize="false"
-	    >
-            <f:content>
-                <Label text="Order ID" />
-                <Input id="id-order" type="Number" value="{orderDetailModel>/OrderID}" />
-                <Label text="Customer" />
-                <Input id="id-name" value="{orderDetailModel>/CustomerName}" />
-                <Label text="Product" />
-                <Input id="id-product" value="{orderDetailModel>/ProductName}" />
-                <Label text="Quantity" />
-                <Input id="id-quantity" type="Number" value="{orderDetailModel>/Quantity}" />
-            </f:content>
-            
-	    </f:SimpleForm>
-    </VBox>
-    <!-- <HBox class="hbox-button"> -->
-		
-		<FlexBox
-				height="100px"
-				alignItems="Start"
-				justifyContent="Center">
-				<Button text="Submit"
-						press="onPress"
-						class="sapUiSmallMarginBottom"
-				>
-				</Button>
-		</FlexBox>
-	<!-- </HBox> -->
     
-    <Table
-		items="{
-			path: 'orderDetailModel>/orderDetails',
-			sorter: {
-				path: 'Name'
-			}
-		}">
-		<headerToolbar>
-			<OverflowToolbar>
-				<Title text="Order Summary" level="H2"/>
-				<ToolbarSpacer/>
-				<CheckBox text="Fixed Layout" selected="true" select="onCheckBoxSelect"/>
-				<Button text="Open Dialog" press="onOpenPressed"/>
-			</OverflowToolbar>
-		</headerToolbar>
-		<columns>
-			<Column>
-				<Text text="Order ID" />
-			</Column>
-			<Column>
-				<Text text="Customer" />
-			</Column>
-			<Column>
-				<Text text="Product" />
-			</Column>
-            <Column>
-				<Text text="Quantity" />
-			</Column>
-			<Column>
-				<Text text="Priority" />
-			</Column>
+	<SplitApp id="SplitAppDemo1"
+		initialDetail="add-order"
+		initialMaster="master-place-order"
+	>
+		<detailPages>
+			<Page id="add-order" 
+				  navButtonTooltip="Go Back" 
+				  showNavButton="true" 
+				  title="Place Order" 
+				  titleAlignment="Center"
+			> 
+				<customHeader>
+					<OverflowToolbar>
+						<Button icon="sap-icon://menu2" press="onToggleSideNav" />
+						<Title text="Order Entry Form" level="H2" />
+						<ToolbarSpacer />
+						<Button icon="sap-icon://search"/>
+						<Button class="theme-button" text="Theme" press="onOpenThemeMenu" />
+						<Avatar initials="SN" displaySize="XS" />
+					</OverflowToolbar>
+				</customHeader>
+				<VBox class="sapUiSmallMargin">
+					<f:SimpleForm editable="false"
+								  layout="ResponsiveGridLayout"
+								  singleContainerFullSize="false"
+								  title="Enter the following Details"
+	   				 >
+						<f:content>
+							<Label text="Order ID" />
+							<Input id="id-order" type="Number" value="{orderDetailModel>/OrderID}" />
+							<Label text="Customer" />
+							<Input id="id-name" value="{orderDetailModel>/CustomerName}" />
+							<Label text="Product" />
+							<Input id="id-product" value="{orderDetailModel>/ProductName}" />
+							<Label text="Quantity" />
+							<Input id="id-quantity" type="Number" value="{orderDetailModel>/Quantity}" />
+							<Label text="Status" />
+							<Input id="id-status" value="{= ${orderDetailModel>/Status} === 'p'? 'Pending':'Delivered'}" />
+						</f:content>
+	    			</f:SimpleForm>
+					<FlexBox
+						height="100px"
+						alignItems="Start"
+						justifyContent="Center">
+						<Button text="Place Order"
+								type="Emphasized" 
+								press="onPress"
+								class="sapUiSmallMarginEnd"
+								width="100%"
+						></Button>
+					</FlexBox>
+   				</VBox>
+			</Page>
+		
+			<Page id="list-order"
+				  navButtonTooltip="Go Back" 
+				  navButtonPress="goBack"
+				  showNavButton="true" 
+				  title="Order List" 
+				  titleAlignment="Center"
+			> 
+				<customHeader>
+					<OverflowToolbar>
+						<Button icon="sap-icon://menu2" press="onToggleSideNav" />
+						<Title text="Order Summary" level="H2" />
+						<ToolbarSpacer />
+						<Button icon="sap-icon://search"/>
+						<Button class="theme-button" text="Theme" press="onOpenThemeMenu" />
+						<Avatar initials="SN" displaySize="XS" />
+					</OverflowToolbar>
+				</customHeader>
+				<Table items="{ path: 'orderDetailModel>/orderDetails' }">
+					<headerToolbar>
+						<OverflowToolbar>
+							<Title text="Order Summary" level="H2"/>
+						</OverflowToolbar>
+					</headerToolbar>
+					<columns>
+						<Column><Text text="Order ID" /></Column>
+						<Column><Text text="Customer" /></Column>
+						<Column><Text text="Product" /></Column>
+            			<Column><Text text="Quantity" /></Column>
+						<Column><Text text="Priority" /></Column>
+					</columns>
+					<items>
+						<ColumnListItem vAlign="Middle" type="Navigation">
+							<cells>
+								<Text text="{orderDetailModel>OrderID}" wrapping="false" />
+								<Text text="{orderDetailModel>CustomerName}" wrapping="false"/>
+								<Text text="{orderDetailModel>ProductName}" />
+								<Text text="{orderDetailModel>Quantity}" />
+								<Text text="{orderDetailModel>Status}" />
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</Page>
 
-		</columns>
-		<items>
-			<ColumnListItem vAlign="Middle" type="Navigation">
-				<cells>
-					<Text text="{orderDetailModel>OrderID}" wrapping="false" />
-					<Text text="{orderDetailModel>CustomerName}" wrapping="false"/>
-					<Text text="{orderDetailModel>ProductName}" />
-                    <Text text="{orderDetailModel>Quantity}" />
-				</cells>
-			</ColumnListItem>
-		</items>
-	</Table>
+			<Page id="profilePage"
+				  navButtonTooltip="Go Back" 
+				  showNavButton="true" 
+				  title="Profile" 
+				  titleAlignment="Center"
+			>
+				<mvc:XMLView viewName="sample.project1.view.View3"/>
+				
+			</Page>
+		</detailPages>
 
-    </Page>
+		<masterPages>
+			<Page
+				id="master-place-order"
+				title="E-Cart"
+				backgroundDesign= "List"
+			>
+				<List>
+					<StandardListItem title="Place Order" type="Navigation" press="addOrder" />
+					<StandardListItem title="Order Details" type="Navigation" press="listOrder" />
+					<StandardListItem title="Profile" type="Navigation" press="gotoProfile" />
+				</List>
+			</Page>
+		</masterPages>
+	</SplitApp>
 </mvc:View>
