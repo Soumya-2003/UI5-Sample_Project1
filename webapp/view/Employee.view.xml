@@ -1,0 +1,48 @@
+<mvc:View
+	controllerName="sample.project1.controller.Employee"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	>
+	<SplitApp
+		id="SplitAppDemo"
+		initialDetail="detail"
+		initialMaster="master">
+		<detailPages>
+			<Page
+				id="detail"
+				title="Employee Detail"
+				backgroundDesign= "Solid">
+				<VBox class="sapUiMediumMargin">
+        			<Title text="{departmentModel>/selectedEmployee/name}" level="H2"/>
+        			<Text text="Address: {departmentModel>/selectedEmployee/address}"/>
+        			<Text text="Phone: {departmentModel>/selectedEmployee/phone}"/>
+    			</VBox>
+			</Page>
+		</detailPages>
+
+		<masterPages>
+			<Page
+				id="master"
+				title="Department "
+				backgroundDesign= "List">
+				<List items="{departmentModel>/Departments}">
+					<StandardListItem title="{departmentModel>name}" type="Navigation" press="onPressGoToMaster" />
+				</List>
+			</Page>
+			<Page
+				id="master2"
+				title="Employees"
+				backgroundDesign="List"
+				showNavButton="true"
+				navButtonPress=".onPressMasterBack">
+				<List items="{departmentModel>/selectedDepartment/employees}" itemPress="onEmployeePress">
+					<!-- <items> -->
+						<StandardListItem title="{departmentModel>name}"
+									type="Active" 
+						/>
+					<!-- </items> -->
+				</List>
+			</Page>
+		</masterPages>
+	</SplitApp>
+</mvc:View>
