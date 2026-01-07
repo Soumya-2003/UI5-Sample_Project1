@@ -6,6 +6,7 @@ sap.ui.define([
     "use strict";
     return Controller.extend("sample.project1.controller.Employee", {
         onInit: function () {
+            
             var oModel = this.getOwnerComponent().getModel("departmentModel");
             this.getView().setModel(oModel, "departmentModel");
 
