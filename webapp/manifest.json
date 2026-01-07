@@ -60,6 +60,10 @@
       "employeeDetailModel": {
         "type": "sap.ui.model.json.JSONModel",
         "uri": "model/employeeData.json"
+      },
+      "departmentModel": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "model/Departments.json"
       }
     },
     "resources": {
@@ -102,6 +106,13 @@
           "target": [
             "WelcomeUser"
           ]
+        },
+        {
+          "name": "EmployeePage",
+          "pattern": "employee",
+          "target": [
+            "EmployeePage"
+          ]
         }
       ],
       "targets": {
@@ -116,6 +127,10 @@
         "WelcomeUser": {
           "viewName": "View3",
           "viewId": "view3"
+        },
+        "EmployeePage": {
+          "viewName": "Employee",
+          "viewId": "emp"
         }
       }
     },
