@@ -1,0 +1,59 @@
+{
+  "Departments": [
+    {
+      "id": "D01",
+      "name": "Development",
+      "employees": [
+        { "id": "E101", "name": "Amit Sharma", "phone": "9876543210", "address": "Bangalore, KA" },
+        { "id": "E102", "name": "Riya Verma", "phone": "9876543211", "address": "Pune, MH" },
+        { "id": "E103", "name": "Karan Patel", "phone": "9876543212", "address": "Ahmedabad, GJ" },
+        { "id": "E104", "name": "Sneha Iyer", "phone": "9876543213", "address": "Chennai, TN" },
+        { "id": "E105", "name": "Rohit Das", "phone": "9876543214", "address": "Kolkata, WB" }
+      ]
+    },
+    {
+      "id": "D02",
+      "name": "DevOps",
+      "employees": [
+        { "id": "E201", "name": "Ankit Rao", "phone": "9876543220", "address": "Hyderabad, TS" },
+        { "id": "E202", "name": "Neha Singh", "phone": "9876543221", "address": "Noida, UP" },
+        { "id": "E203", "name": "Vikram Mehta", "phone": "9876543222", "address": "Mumbai, MH" },
+        { "id": "E204", "name": "Pooja Nair", "phone": "9876543223", "address": "Kochi, KL" },
+        { "id": "E205", "name": "Arjun Malhotra", "phone": "9876543224", "address": "Delhi, DL" }
+      ]
+    },
+    {
+      "id": "D03",
+      "name": "Cloud",
+      "employees": [
+        { "id": "E301", "name": "Siddharth Roy", "phone": "9876543230", "address": "Gurgaon, HR" },
+        { "id": "E302", "name": "Megha Kapoor", "phone": "9876543231", "address": "Chandigarh, CH" },
+        { "id": "E303", "name": "Rahul Menon", "phone": "9876543232", "address": "Trivandrum, KL" },
+        { "id": "E304", "name": "Pankaj Mishra", "phone": "9876543233", "address": "Patna, BR" },
+        { "id": "E305", "name": "Nisha Kulkarni", "phone": "9876543234", "address": "Nagpur, MH" }
+      ]
+    },
+    {
+      "id": "D04",
+      "name": "UI/UX",
+      "employees": [
+        { "id": "E401", "name": "Tanya Arora", "phone": "9876543240", "address": "Jaipur, RJ" },
+        { "id": "E402", "name": "Mohit Bansal", "phone": "9876543241", "address": "Ambala, HR" },
+        { "id": "E403", "name": "Simran Kaur", "phone": "9876543242", "address": "Ludhiana, PB" },
+        { "id": "E404", "name": "Aakash Sethi", "phone": "9876543243", "address": "Delhi, DL" },
+        { "id": "E405", "name": "Priya Chatterjee", "phone": "9876543244", "address": "Siliguri, WB" }
+      ]
+    },
+    {
+      "id": "D05",
+      "name": "Security",
+      "employees": [
+        { "id": "E501", "name": "Rohan Mehta", "phone": "9876543250", "address": "Udaipur, RJ" },
+        { "id": "E502", "name": "Kavita Joshi", "phone": "9876543251", "address": "Dehradun, UK" },
+        { "id": "E503", "name": "Deepak Yadav", "phone": "9876543252", "address": "Gwalior, MP" },
+        { "id": "E504", "name": "Shruti Malhotra", "phone": "9876543253", "address": "Faridabad, HR" },
+        { "id": "E505", "name": "Manoj Sinha", "phone": "9876543254", "address": "Varanasi, UP" }
+      ]
+    }
+  ]
+}
