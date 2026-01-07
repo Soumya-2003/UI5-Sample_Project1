@@ -39,6 +39,9 @@ sap.ui.define([
             else if (sKey === "welcome") {
 				oRouter.navTo("WelcomePage", {});
 			}
+            else if (sKey === "employee") {
+				oRouter.navTo("EmployeePage", {});
+			}
 
             this._oPopover.close();
         },
