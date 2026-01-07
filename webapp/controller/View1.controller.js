@@ -3,12 +3,42 @@ sap.ui.define([
     "sap/ui/model/json/JSONModel",
     "sap/m/MessageBox",
     "sap/ui/core/Fragment",
-    "sample/project1/helper/themeHelper"
-], (Controller, JSONModel, MessageBox, Fragment, themeHelper) => {
+    "sample/project1/helper/themeHelper",
+    "sap/ui/Device",
+    "sap/base/Log"
+], (Controller, JSONModel, MessageBox, Fragment, themeHelper, Device, Log) => {
     "use strict";
     return Controller.extend("sample.project1.controller.View1", {
         onInit: function () {
             themeHelper.initTheme();
+            this.getSplitAppObj().setHomeIcon({
+				'phone': 'phone-icon.png',
+				'tablet': 'tablet-icon.png',
+				'icon': 'desktop.ico'
+			});
+            var oSplitApp = this.getSplitAppObj();
+            oSplitApp.toMaster(this.createId("master-place-order"));
+            oSplitApp.toDetail(this.createId("add-order"));
+			Device.orientation.attachHandler(this.onOrientationChange, this);
+        },
+        getSplitAppObj: function () {
+			var result = this.byId("SplitAppDemo1");
+			if (!result) {
+				Log.info("SplitApp object can't be found");
+			}
+			return result;
+		},
+        goBack: function(){
+            
+        },
+        addOrder: function(){
+            this.getSplitAppObj().toDetail(this.createId("add-order"));
+        },
+        listOrder: function(){
+            this.getSplitAppObj().toDetail(this.createId("list-order"));
+        },
+        gotoProfile: function(){
+            this.getSplitAppObj().toDetail(this.createId("profilePage"));
         },
         onToggleSideNav: async function (oEvent) {
             var oButton = oEvent.getSource(),
@@ -68,7 +98,7 @@ sap.ui.define([
 
             oModel.refresh(true);
 
-            MessageBox.success(`Order ${nOrderID} is added`);
+            MessageBox.success(`${sProduct} Placed with Order ID: ${nOrderID}`);
 
             oModel.setProperty("/OrderID", "");
             oModel.setProperty("/CustomerName", "");
@@ -76,11 +106,11 @@ sap.ui.define([
             oModel.setProperty("/Quantity", "");
 
         },
-        onCheckBoxSelect: function (oEvent) {
-            var bFixedLayout = oEvent.getParameter("selected");
-            var oTable = oEvent.getSource().getParent().getParent();
-            oTable.setFixedLayout(bFixedLayout);
-        },
+        // onCheckBoxSelect: function (oEvent) {
+        //     var bFixedLayout = oEvent.getParameter("selected");
+        //     var oTable = oEvent.getSource().getParent().getParent();
+        //     oTable.setFixedLayout(bFixedLayout);
+        // },
         onOpenThemeMenu: function (oEvent) {
             var oView = this.getView();
 
