@@ -3,6 +3,6 @@
     "CustomerName": "",
     "ProductName": "",
     "Quantity": "",
-    "Status": "",
+    "Stock": "",
     "orderDetails": []
 }

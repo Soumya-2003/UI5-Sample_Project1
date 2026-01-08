@@ -96,9 +96,6 @@
 			</ObjectPageSection>
 
 		</sections>
-
-
-		<!-- <Text id="welcomeText" text="Welcome! User" /> -->
 		
 	</ObjectPageLayout>
 </mvc:View>

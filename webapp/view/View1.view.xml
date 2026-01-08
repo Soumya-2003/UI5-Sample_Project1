@@ -14,15 +14,15 @@
 	>
 		<detailPages>
 			<Page id="add-order" 
-				  navButtonTooltip="Go Back" 
+				  navButtonTooltip="{i18n_demo>navButtonTooltipText}" 
 				  showNavButton="true" 
-				  title="Place Order" 
+				  title="{i18n_demo>placeOrderButtonText}" 
 				  titleAlignment="Center"
 			> 
 				<customHeader>
 					<OverflowToolbar>
 						<Button icon="sap-icon://menu2" press="onToggleSideNav" />
-						<Title text="Order Entry Form" level="H2" />
+						<Title text="{i18n_demo>orderPageHeaderTitle}" level="H2" />
 						<ToolbarSpacer />
 						<Button icon="sap-icon://search"/>
 						<Button class="theme-button" text="Theme" press="onOpenThemeMenu" />
@@ -33,26 +33,26 @@
 					<f:SimpleForm editable="false"
 								  layout="ResponsiveGridLayout"
 								  singleContainerFullSize="false"
-								  title="Enter the following Details"
+								  title="{i18n_demo>orderFormTitle}"
 	   				 >
 						<f:content>
-							<Label text="Order ID" />
+							<Label text="{i18n_demo>orderID}" />
 							<Input id="id-order" type="Number" value="{orderDetailModel>/OrderID}" />
-							<Label text="Customer" />
+							<Label text="{i18n_demo>customer}" />
 							<Input id="id-name" value="{orderDetailModel>/CustomerName}" />
-							<Label text="Product" />
+							<Label text="{i18n_demo>product}" />
 							<Input id="id-product" value="{orderDetailModel>/ProductName}" />
-							<Label text="Quantity" />
+							<Label text="{i18n_demo>quantity}" />
 							<Input id="id-quantity" type="Number" value="{orderDetailModel>/Quantity}" />
-							<Label text="Status" />
-							<Input id="id-status" value="{= ${orderDetailModel>/Status} === 'p'? 'Pending':'Delivered'}" />
+							<Label text="{i18n_demo>stock}" />
+							<Input id="id-stock" value="{orderDetailModel>/Stock}" />
 						</f:content>
 	    			</f:SimpleForm>
 					<FlexBox
 						height="100px"
 						alignItems="Start"
 						justifyContent="Center">
-						<Button text="Place Order"
+						<Button text="{i18n_demo>placeOrderButtonText}"
 								type="Emphasized" 
 								press="onPress"
 								class="sapUiSmallMarginEnd"
@@ -63,16 +63,16 @@
 			</Page>
 		
 			<Page id="list-order"
-				  navButtonTooltip="Go Back" 
+				  navButtonTooltip="{i18n_demo>navButtonTooltipText}" 
 				  navButtonPress="goBack"
 				  showNavButton="true" 
-				  title="Order List" 
+				  title="{i18n_demo>orderListPageTitle}" 
 				  titleAlignment="Center"
 			> 
 				<customHeader>
 					<OverflowToolbar>
 						<Button icon="sap-icon://menu2" press="onToggleSideNav" />
-						<Title text="Order Summary" level="H2" />
+						<Title text="{i18n_demo>orderSummaryText}" level="H2" />
 						<ToolbarSpacer />
 						<Button icon="sap-icon://search"/>
 						<Button class="theme-button" text="Theme" press="onOpenThemeMenu" />
@@ -82,15 +82,15 @@
 				<Table items="{ path: 'orderDetailModel>/orderDetails' }">
 					<headerToolbar>
 						<OverflowToolbar>
-							<Title text="Order Summary" level="H2"/>
+							<Title text="{i18n_demo>orderSummaryText}" level="H2"/>
 						</OverflowToolbar>
 					</headerToolbar>
 					<columns>
-						<Column><Text text="Order ID" /></Column>
-						<Column><Text text="Customer" /></Column>
-						<Column><Text text="Product" /></Column>
-            			<Column><Text text="Quantity" /></Column>
-						<Column><Text text="Priority" /></Column>
+						<Column><Text text="{i18n_demo>orderID}" /></Column>
+						<Column><Text text="{i18n_demo>customer}" /></Column>
+						<Column><Text text="{i18n_demo>product}" /></Column>
+            			<Column><Text text="{i18n_demo>quantity}" /></Column>
+						<Column><Text text="{i18n_demo>stock}" /></Column>
 					</columns>
 					<items>
 						<ColumnListItem vAlign="Middle" type="Navigation">
@@ -99,7 +99,7 @@
 								<Text text="{orderDetailModel>CustomerName}" wrapping="false"/>
 								<Text text="{orderDetailModel>ProductName}" />
 								<Text text="{orderDetailModel>Quantity}" />
-								<Text text="{orderDetailModel>Status}" />
+								<Text text="{= ${orderDetailModel>Stock} === 'y' ? 'Available':'Out Of Stock' }" />
 							</cells>
 						</ColumnListItem>
 					</items>
@@ -107,12 +107,107 @@
 			</Page>
 
 			<Page id="profilePage"
-				  navButtonTooltip="Go Back" 
+				  navButtonTooltip="{i18n_demo>navButtonTooltipText}" 
 				  showNavButton="true" 
-				  title="Profile" 
+				  title="{i18n_demo>profilePageTitle}" 
 				  titleAlignment="Center"
 			>
-				<mvc:XMLView viewName="sample.project1.view.View3"/>
+				<mvc:View
+					controllerName="sample.project1.Blocks.Profile.ProfileObjectPage"
+					xmlns:mvc="sap.ui.core.mvc"
+					xmlns="sap.uxap"
+					xmlns:layout="sap.ui.layout"
+					xmlns:m="sap.m"
+					xmlns:about="sample.project1.Blocks.About"
+					xmlns:course="sample.project1.Blocks.Course"
+					xmlns:skill="sample.project1.Blocks.Skill">
+
+					<ObjectPageLayout
+						enableLazyLoading="true"
+						useIconTabBar="true"
+						showTitleInHeaderContent="true"
+						upperCaseAnchorBar="false">
+
+						<headerTitle>
+							<ObjectPageDynamicHeaderTitle>
+								<expandedHeading>
+									<m:Title text="Welcome! Disney" wrapping="true"/>
+								</expandedHeading>
+
+								<snappedHeading>
+									<m:FlexBox fitContainer="true" alignItems="Center">
+										<m:Avatar src="images/sample-avatar-image.jpg" class="sapUiTinyMarginEnd"/>
+										<m:Title text="Walt Disney" wrapping="true"/>
+									</m:FlexBox>
+								</snappedHeading>
+
+								<expandedContent>
+									<m:Text text="DevOps"/>
+								</expandedContent>
+
+								<actions>
+									<m:Button class="theme-button" text="Theme" type="Transparent" press="onOpenThemeMenu"/>
+									<m:Avatar initials="SN" displaySize="XS"/>
+								</actions>
+							</ObjectPageDynamicHeaderTitle>
+						</headerTitle>
+
+						<headerContent>
+							<m:FlexBox wrap="Wrap" fitContainer="true">
+								<m:Avatar src="images/linked-profile.jpeg" displaySize="L" class="sapUiSmallMarginEnd"/>
+								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+									<m:Link text="+91 9876543210"/>
+									<m:Link text="xyz@mav.edu.in"/>
+								</layout:VerticalLayout>
+								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+									<m:Label text="Memari, West Bengal, India"/>
+								</layout:VerticalLayout>
+							</m:FlexBox>
+						</headerContent>
+
+						<sections>
+
+							<ObjectPageSection title="About Me">
+								<subSections>
+									<ObjectPageSubSection>
+										<blocks>
+											<about:AboutBlock/>
+										</blocks>
+									</ObjectPageSubSection>
+								</subSections>
+							</ObjectPageSection>
+
+							<ObjectPageSection title="Coursework">
+								<subSections>
+									<ObjectPageSubSection>
+										<blocks>
+											<course:CourseBlock/>
+										</blocks>
+									</ObjectPageSubSection>
+								</subSections>
+							</ObjectPageSection>
+
+							<ObjectPageSection title="Skills">
+								<subSections>
+									<ObjectPageSubSection title="Technical Skill">
+										<blocks>
+											<skill:TechnicalSkill/>
+										</blocks>
+									</ObjectPageSubSection>
+									<ObjectPageSubSection title="Soft Skill">
+										<blocks>
+											<skill:SoftSkill/>
+										</blocks>
+									</ObjectPageSubSection>
+								</subSections>
+							</ObjectPageSection>
+
+						</sections>
+					</ObjectPageLayout>
+				</mvc:View>
+
+
+				<!-- <mvc:XMLView viewName="sample.project1.view.View3"/> -->
 				
 			</Page>
 		</detailPages>
@@ -120,13 +215,13 @@
 		<masterPages>
 			<Page
 				id="master-place-order"
-				title="E-Cart"
+				title="{i18n_demo>ecart}"
 				backgroundDesign= "List"
 			>
 				<List>
-					<StandardListItem title="Place Order" type="Navigation" press="addOrder" />
-					<StandardListItem title="Order Details" type="Navigation" press="listOrder" />
-					<StandardListItem title="Profile" type="Navigation" press="gotoProfile" />
+					<StandardListItem title="{i18n_demo>placeOrderButtonText}" type="Navigation" press="addOrder" />
+					<StandardListItem title="{i18n_demo>orderDetailsText}" type="Navigation" press="listOrder" />
+					<StandardListItem title="{i18n_demo>profilePageTitle}" type="Navigation" press="gotoProfile" />
 				</List>
 			</Page>
 		</masterPages>

@@ -1,0 +1,28 @@
+{
+  "pages": [
+    {
+      "pageId": "main",
+      "header": "About Me",
+      "title": "Soumyadeep Mallick",
+      "description": "Aspiring DevOps Engineer",
+      "icon": "sap-icon://employee",
+      "groups": [
+        {
+          "heading": "Profile",
+          "elements": [
+            { "label": "Degree", "value": "B.Tech CSE ’26" },
+            { "label": "Cloud", "value": "AWS, Kubernetes, Terraform" },
+            { "label": "CI/CD", "value": "Jenkins, GitHub Actions, ArgoCD" }
+          ]
+        },
+        {
+          "heading": "Contact",
+          "elements": [
+            { "label": "Email", "value": "xyz@mav.edu.in" },
+            { "label": "Location", "value": "Memari, West Bengal" }
+          ]
+        }
+      ]
+    }
+  ]
+}

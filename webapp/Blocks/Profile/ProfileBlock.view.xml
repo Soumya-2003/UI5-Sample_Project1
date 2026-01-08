@@ -1,0 +1,93 @@
+<mvc:View
+    controllerName="sample.project1.Blocks.Profile.ProfileObjectPage"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.uxap"
+    xmlns:layout="sap.ui.layout"
+    xmlns:m="sap.m"
+    xmlns:about="sample.project1.Blocks.About"
+    xmlns:course="sample.project1.Blocks.Course"
+    xmlns:skill="sample.project1.Blocks.Skill">
+
+    <ObjectPageLayout
+        enableLazyLoading="true"
+        useIconTabBar="true"
+        showTitleInHeaderContent="true"
+        upperCaseAnchorBar="false">
+
+        <headerTitle>
+            <ObjectPageDynamicHeaderTitle>
+                <expandedHeading>
+                    <m:Title id="welcomeText1" wrapping="true"/>
+                </expandedHeading>
+
+                <snappedHeading>
+                    <m:FlexBox fitContainer="true" alignItems="Center">
+                        <m:Avatar src="images/sample-avatar-image.jpg" class="sapUiTinyMarginEnd"/>
+                        <m:Title id="Username1" wrapping="true"/>
+                    </m:FlexBox>
+                </snappedHeading>
+
+                <expandedContent>
+                    <m:Text text="DevOps"/>
+                </expandedContent>
+
+                <actions>
+                    <m:Button class="theme-button" text="Theme" type="Transparent" press="onOpenThemeMenu"/>
+                    <m:Avatar initials="SN" displaySize="XS"/>
+                </actions>
+            </ObjectPageDynamicHeaderTitle>
+        </headerTitle>
+
+        <headerContent>
+            <m:FlexBox wrap="Wrap" fitContainer="true">
+                <m:Avatar src="images/linked-profile.jpeg" displaySize="L" class="sapUiSmallMarginEnd"/>
+                <layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+                    <m:Link text="+91 9876543210"/>
+                    <m:Link text="xyz@mav.edu.in"/>
+                </layout:VerticalLayout>
+                <layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+                    <m:Label text="Memari, West Bengal, India"/>
+                </layout:VerticalLayout>
+            </m:FlexBox>
+        </headerContent>
+
+        <sections>
+
+            <ObjectPageSection title="About Me">
+                <subSections>
+                    <ObjectPageSubSection>
+                        <blocks>
+                            <about:AboutBlock/>
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+
+            <ObjectPageSection title="Coursework">
+                <subSections>
+                    <ObjectPageSubSection>
+                        <blocks>
+                            <course:CourseBlock/>
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+
+            <ObjectPageSection title="Skills">
+                <subSections>
+                    <ObjectPageSubSection title="Technical Skill">
+                        <blocks>
+                            <skill:TechnicalSkill/>
+                        </blocks>
+                    </ObjectPageSubSection>
+                    <ObjectPageSubSection title="Soft Skill">
+                        <blocks>
+                            <skill:SoftSkill/>
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+
+        </sections>
+    </ObjectPageLayout>
+</mvc:View>

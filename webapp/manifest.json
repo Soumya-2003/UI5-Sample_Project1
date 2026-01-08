@@ -53,6 +53,12 @@
           "bundleName": "sample.project1.i18n.i18n"
         }
       },
+      "i18n_demo": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "sample.project1.i18n.i18n_demo"
+        }
+      },
       "orderDetailModel": {
         "type": "sap.ui.model.json.JSONModel",
         "uri": "model/orderData.json"

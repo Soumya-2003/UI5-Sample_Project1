@@ -12,32 +12,32 @@ sap.ui.define([
         onInit: function () {
             themeHelper.initTheme();
             this.getSplitAppObj().setHomeIcon({
-				'phone': 'phone-icon.png',
-				'tablet': 'tablet-icon.png',
-				'icon': 'desktop.ico'
-			});
+                'phone': 'phone-icon.png',
+                'tablet': 'tablet-icon.png',
+                'icon': 'desktop.ico'
+            });
             var oSplitApp = this.getSplitAppObj();
             oSplitApp.toMaster(this.createId("master-place-order"));
             oSplitApp.toDetail(this.createId("add-order"));
-			Device.orientation.attachHandler(this.onOrientationChange, this);
+            Device.orientation.attachHandler(this.onOrientationChange, this);
         },
         getSplitAppObj: function () {
-			var result = this.byId("SplitAppDemo1");
-			if (!result) {
-				Log.info("SplitApp object can't be found");
-			}
-			return result;
-		},
-        goBack: function(){
-            
+            var result = this.byId("SplitAppDemo1");
+            if (!result) {
+                Log.info("SplitApp object can't be found");
+            }
+            return result;
         },
-        addOrder: function(){
+        goBack: function () {
+
+        },
+        addOrder: function () {
             this.getSplitAppObj().toDetail(this.createId("add-order"));
         },
-        listOrder: function(){
+        listOrder: function () {
             this.getSplitAppObj().toDetail(this.createId("list-order"));
         },
-        gotoProfile: function(){
+        gotoProfile: function () {
             this.getSplitAppObj().toDetail(this.createId("profilePage"));
         },
         onToggleSideNav: async function (oEvent) {
@@ -64,14 +64,14 @@ sap.ui.define([
             var sKey = oEvent.getParameter("item").getKey();
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             if (sKey === "user") {
-               oRouter.navTo("RouteUser", {});
+                oRouter.navTo("RouteUser", {});
             }
             else if (sKey === "welcome") {
-				oRouter.navTo("WelcomePage", {});
-			}
+                oRouter.navTo("WelcomePage", {});
+            }
             else if (sKey === "employee") {
-				oRouter.navTo("EmployeePage", {});
-			}
+                oRouter.navTo("EmployeePage", {});
+            }
 
             this._oPopover.close();
         },
@@ -83,17 +83,19 @@ sap.ui.define([
             const sCustomer = oModel.getProperty("/CustomerName");
             const sProduct = oModel.getProperty("/ProductName");
             const nQty = oModel.getProperty("/Quantity");
+            const sStock = oModel.getProperty("/Stock");
 
-            if (!nOrderID || !sCustomer || !sProduct || !nQty) {
+            if (!nOrderID || !sCustomer || !sProduct || !nQty || !sStock) {
                 sap.m.MessageBox.warning("Please fill all fields");
                 return;
             }
 
             aOrderData.push({
-                "OrderID": oModel.getProperty("/OrderID"),
-                "CustomerName": oModel.getProperty("/CustomerName"),
-                "ProductName": oModel.getProperty("/ProductName"),
-                "Quantity": oModel.getProperty("/Quantity")
+                OrderID: nOrderID,
+                CustomerName: sCustomer,
+                ProductName: sProduct,
+                Quantity: nQty,
+                Stock: sStock
             })
 
             oModel.refresh(true);
@@ -104,6 +106,7 @@ sap.ui.define([
             oModel.setProperty("/CustomerName", "");
             oModel.setProperty("/ProductName", "");
             oModel.setProperty("/Quantity", "");
+            oModel.setProperty("/Stock", "");
 
         },
         // onCheckBoxSelect: function (oEvent) {
