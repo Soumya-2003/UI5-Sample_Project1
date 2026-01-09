@@ -14,12 +14,12 @@
 		title="OData Products"
 		showHeader="true" >
 
-        <Input placeholder="Enter ID" value="{productModel>/productID}" class="sapUiMediumMarginBegin sapUiLargeMarginTopBottom" width="20%"/>
+        <!-- <Input placeholder="Enter ID" value="{productModel>/productID}" class="sapUiMediumMarginBegin sapUiLargeMarginTopBottom" width="20%"/>
         <Input placeholder="Name" value="{productModel>/productName}" class="sapUiMediumMarginBegin sapUiLargeMarginTopBottom" width="20%"/>
         <Input placeholder="Description" value="{productModel>/productDesc}" class="sapUiMediumMarginBegin sapUiLargeMarginTopBottom" width="20%"/>
-        <Input placeholder="Price" value="{productModel>/productPrice}" class="sapUiMediumMarginBegin sapUiLargeMarginTopBottom" width="20%"/>
+        <Input placeholder="Price" value="{productModel>/productPrice}" class="sapUiMediumMarginBegin sapUiLargeMarginTopBottom" width="20%"/> -->
 
-        <VBox>
+        <!-- <VBox>
             <FlexBox alignItems="Start"
 					justifyContent="Center">
                 <Button text="Add Product" press="addProduct" class="sapUiMediumMarginBottom" width="100%" >
@@ -27,9 +27,16 @@
                 <Button text="Update Product" press="updateProduct" class="sapUiMediumMarginBegin" width="100%" >
                 </Button>
             </FlexBox>
-        </VBox>
+        </VBox> -->
 
         <Table items="{/Products}" >
+            <headerToolbar>
+                <OverflowToolbar>
+                    <Title text="Products" level="H2"/>
+                    <ToolbarSpacer/>
+                    <Button text="Create" press="onPressCreate"/>
+                </OverflowToolbar>
+            </headerToolbar>
             <columns>
                 <Column><Text text="ID"/></Column>
                 <Column><Text text="Name"/></Column>
