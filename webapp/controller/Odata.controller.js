@@ -3,8 +3,9 @@ sap.ui.define([
     "sap/ui/core/routing/History",
     "sap/ui/core/Fragment",
     "sample/project1/helper/themeHelper",
-    "sap/m/MessageToast"
-], (Controller, History, Fragment, themeHelper, MessageToast) => {
+    "sap/m/MessageToast",
+    "sap/m/MessageBox",
+], (Controller, History, Fragment, themeHelper, MessageToast, MessageBox) => {
     "use strict";
     return Controller.extend("sample.project1.controller.Odata", {
         onInit: function () {
@@ -57,8 +58,29 @@ sap.ui.define([
             this._oPopover.close();
         },
 
-        addProduct: function (oEvent) {
-            const oModel = this.getView().getModel();
+        onPressCreate: async function(){
+            const oView = this.getView();
+
+            if (!this._oCreateDialog) {
+                this._oCreateDialog = await sap.ui.core.Fragment.load({
+                    id: oView.getId(),
+                    name: "sample.project1.fragments.CreateProduct",
+                    controller: this
+                });
+                oView.addDependent(this._oCreateDialog);
+            }
+
+            const oModelProduct = oView.getModel("productModel");
+            oModelProduct.setProperty("/productID", "");
+            oModelProduct.setProperty("/productName", "");
+            oModelProduct.setProperty("/productDesc", "");
+            oModelProduct.setProperty("/productPrice", "");
+
+            this._oCreateDialog.open();
+        },
+
+        addProductOnTable: function (oEvent) {
+            const oDataModel = this.getView().getModel();
             const oModelProduct = this.getView().getModel("productModel");
 
             const ID = oModelProduct.getProperty("/productID");
@@ -66,27 +88,40 @@ sap.ui.define([
             const Description = oModelProduct.getProperty("/productDesc");
             const Price = oModelProduct.getProperty("/productPrice");
 
-            const oPayLoad = { ID, Name, Description, Price }
-            oModel.setUseBatch(false);
+            if (!ID || !Name || !Description || !Price) {
+                MessageBox.warning("Please fill all fields");
+                return;
+            }
 
-            oModel.create("/Products", oPayLoad, {
-                success: function () {
+            const oPayLoad = { ID, Name, Description, Price }
+            oDataModel.setUseBatch(false);
+
+            oDataModel.create("/Products", oPayLoad, {
+                success: () => {
                     MessageToast.show("Created Successfully");
-                    oModel.refresh(true);
-                    oModelProduct.setProperty("/productID", "");
-                    oModelProduct.setProperty("/productName", "");
-                    oModelProduct.setProperty("/productDesc", "");
-                    oModelProduct.setProperty("/productPrice", "");
+                    oDataModel.refresh(true);
+                    this._oCreateDialog.close();
                 },
-                error: function () {
+                error: () => {
                     MessageToast.show("Failed to create");
                 }
             })
+        },
+
+
+        
+        onPressCancelNewProduct: function () {
+            this._oCreateDialog.close();
+        },
+
+        onAfterCloseDialog: function () {
+            const oModelProduct = this.getView().getModel("productModel");
+            oModelProduct.setProperty("/productID", "");
+            oModelProduct.setProperty("/productName", "");
+            oModelProduct.setProperty("/productDesc", "");
+            oModelProduct.setProperty("/productPrice", "");
         }
 
-        // updateProduct: function(){
-
-        // }
 
 
     });
