@@ -1,0 +1,52 @@
+<mvc:View
+	height="100%"
+	controllerName="sample.project1.controller.Odata"
+	xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:mdc="sap.ui.mdc"
+    xmlns:mdct="sap.ui.mdc.table"
+	xmlns:core="sap.ui.core"
+>
+	<Page
+		id="page"
+		title="OData Products"
+		showHeader="true" >
+
+        <Input placeholder="Enter ID" value="{productModel>/productID}" class="sapUiMediumMarginBegin sapUiLargeMarginTopBottom" width="20%"/>
+        <Input placeholder="Name" value="{productModel>/productName}" class="sapUiMediumMarginBegin sapUiLargeMarginTopBottom" width="20%"/>
+        <Input placeholder="Description" value="{productModel>/productDesc}" class="sapUiMediumMarginBegin sapUiLargeMarginTopBottom" width="20%"/>
+        <Input placeholder="Price" value="{productModel>/productPrice}" class="sapUiMediumMarginBegin sapUiLargeMarginTopBottom" width="20%"/>
+
+        <VBox>
+            <FlexBox alignItems="Start"
+					justifyContent="Center">
+                <Button text="Add Product" press="addProduct" class="sapUiMediumMarginBottom" width="100%" >
+                </Button>
+                <Button text="Update Product" press="updateProduct" class="sapUiMediumMarginBegin" width="100%" >
+                </Button>
+            </FlexBox>
+        </VBox>
+
+        <Table items="{/Products}" >
+            <columns>
+                <Column><Text text="ID"/></Column>
+                <Column><Text text="Name"/></Column>
+                <Column><Text text="Description"/></Column>
+                <Column><Text text="Price"/></Column>
+            </columns>
+
+            <items>
+                <ColumnListItem>
+                <cells>
+                    <Text text="{ID}"/>
+                    <Text text="{Name}"/>
+                    <Text text="{Description}"/>
+                    <Text text="{Price}"/>
+                </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+	</Page>
+</mvc:View>
