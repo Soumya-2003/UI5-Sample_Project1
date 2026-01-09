@@ -56,6 +56,9 @@ sap.ui.define([
 			else if (sKey === "employee") {
 				oRouter.navTo("EmployeePage", {});
 			}
+			else if (sKey === "odata") {
+                oRouter.navTo("OdataRoute", {});
+            }
 			this._oPopover.close();
 		},
 		onWelcome: function () {
