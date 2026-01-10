@@ -4,7 +4,22 @@
     xmlns:l="sap.ui.layout" 
     xmlns:form="sap.ui.layout.form"
     >
-    <Dialog title="Edit Product" contentWidth="800px" afterClose="onAfterCloseDialog">
+    <Dialog contentWidth="800px" afterClose="onAfterCloseDialog">
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <Title text="Edit Product"/>
+                </contentLeft>
+
+                <contentRight>
+                    <Button text="Delete"
+                            icon="sap-icon://delete"
+                            type="Reject"
+                            press="onPressDeleteProduct"/>
+                </contentRight>
+            </Bar>
+        </customHeader>
+
         
         <form:SimpleForm
             layout="ResponsiveGridLayout"
@@ -46,6 +61,7 @@
         </form:SimpleForm>
         <beginButton>
         <Button type="Emphasized" text="Update" press="onPressUpdateProduct" />
+        
         </beginButton>
         <endButton>
             <Button text="Cancel" press="onPressCancelEditProduct" />
