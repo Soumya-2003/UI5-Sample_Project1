@@ -94,7 +94,7 @@ sap.ui.define([
             }
 
             const oPayLoad = { ID, Name, Description, Price }
-            // oDataModel.setUseBatch(false);
+            oDataModel.setUseBatch(false);
 
             oDataModel.create("/Products", oPayLoad, {
                 success: () => {
@@ -102,7 +102,8 @@ sap.ui.define([
                     oDataModel.refresh(true);
                     this._oCreateDialog.close();
                 },
-                error: () => {
+                error: (oError) => {
+                    console.log(oError);
                     MessageToast.show("Failed to create");
                 }
             })
@@ -122,18 +123,18 @@ sap.ui.define([
         },
 
         onItemPress: function (oEvent) {
-            const oItem = oEvent.getParameter("listItem");
-            const oCtx = oItem.getBindingContext();   // 👈 context
-            const oData = oCtx.getObject();
+            const oSelectedProduct = oEvent.getParameter("listItem");
+            const oSelectedProductContext = oSelectedProduct.getBindingContext();
+            const oSelectedProductData = oSelectedProductContext.getObject();
 
-            this._sUpdatePath = oCtx.getPath();
+            this._sUpdatePath = oSelectedProductContext.getPath();
 
             const oProductModel = this.getView().getModel("productModel");
             oProductModel.setData({
-                productID: oData.ID,
-                productName: oData.Name,
-                productDesc: oData.Description,
-                productPrice: oData.Price
+                productID: oSelectedProductData.ID,
+                productName: oSelectedProductData.Name,
+                productDesc: oSelectedProductData.Description,
+                productPrice: oSelectedProductData.Price
             })
 
             this._openUpdateDialog();
@@ -179,6 +180,29 @@ sap.ui.define([
         onPressCancelEditProduct: function () {
             this._oUpdateDialog.close();
         },
+
+        onPressDeleteProduct: function () {
+            const oModel = this.getView().getModel();
+            const sPath = this._sUpdatePath;
+
+            MessageBox.confirm("Are you sure you want to delete this product?", {
+                onClose: (sAction) => {
+                    if (sAction === "OK") {
+                        oModel.remove(sPath, {
+                            success: () => {
+                                MessageToast.show("Product deleted");
+                                oModel.refresh(true);
+                                this._oUpdateDialog.close();
+                            },
+                            error: () => {
+                                MessageBox.error("Delete failed");
+                            }
+                        });
+                    }
+                }
+            });
+        }
+
 
 
     });
