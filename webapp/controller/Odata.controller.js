@@ -58,7 +58,7 @@ sap.ui.define([
             this._oPopover.close();
         },
 
-        onPressCreate: async function(){
+        onPressCreate: async function () {
             const oView = this.getView();
 
             if (!this._oCreateDialog) {
@@ -94,7 +94,7 @@ sap.ui.define([
             }
 
             const oPayLoad = { ID, Name, Description, Price }
-            oDataModel.setUseBatch(false);
+            // oDataModel.setUseBatch(false);
 
             oDataModel.create("/Products", oPayLoad, {
                 success: () => {
@@ -109,7 +109,6 @@ sap.ui.define([
         },
 
 
-        
         onPressCancelNewProduct: function () {
             this._oCreateDialog.close();
         },
@@ -120,8 +119,66 @@ sap.ui.define([
             oModelProduct.setProperty("/productName", "");
             oModelProduct.setProperty("/productDesc", "");
             oModelProduct.setProperty("/productPrice", "");
-        }
+        },
 
+        onItemPress: function (oEvent) {
+            const oItem = oEvent.getParameter("listItem");
+            const oCtx = oItem.getBindingContext();   // 👈 context
+            const oData = oCtx.getObject();
+
+            this._sUpdatePath = oCtx.getPath();
+
+            const oProductModel = this.getView().getModel("productModel");
+            oProductModel.setData({
+                productID: oData.ID,
+                productName: oData.Name,
+                productDesc: oData.Description,
+                productPrice: oData.Price
+            })
+
+            this._openUpdateDialog();
+
+        },
+
+        _openUpdateDialog: async function () {
+            const oView = this.getView();
+
+            if (!this._oUpdateDialog) {
+                this._oUpdateDialog = await Fragment.load({
+                    id: oView.getId(),
+                    name: "sample.project1.fragments.UpdateProduct",
+                    controller: this
+                });
+                oView.addDependent(this._oUpdateDialog);
+            }
+
+            this._oUpdateDialog.open();
+        },
+
+        onPressUpdateProduct: function () {
+            const oModel = this.getView().getModel();
+            const oProductModel = this.getView().getModel("productModel").getData();
+            const oPayload = {
+                Name: oProductModel.productName,
+                Description: oProductModel.productDesc,
+                Price: oProductModel.productPrice
+            };
+            oModel.update(this._sUpdatePath, oPayload, {
+                success: () => {
+                    MessageToast.show("Product updated");
+                    oModel.refresh(true);
+                    this._oUpdateDialog.close();
+                },
+                error: (err) => {
+                    console.log(err);
+                    MessageToast.show("Update failed")
+                }
+            });
+        },
+
+        onPressCancelEditProduct: function () {
+            this._oUpdateDialog.close();
+        },
 
 
     });

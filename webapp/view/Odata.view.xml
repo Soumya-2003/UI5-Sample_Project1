@@ -29,7 +29,9 @@
             </FlexBox>
         </VBox> -->
 
-        <Table items="{/Products}" >
+        <Table items="{/Products}"
+               itemPress="onItemPress"
+         >
             <headerToolbar>
                 <OverflowToolbar>
                     <Title text="Products" level="H2"/>
@@ -45,7 +47,7 @@
             </columns>
 
             <items>
-                <ColumnListItem>
+                <ColumnListItem type="Active">
                 <cells>
                     <Text text="{ID}"/>
                     <Text text="{Name}"/>
