@@ -12,7 +12,7 @@
 	core:require="{ Formatter: 'sample/project1/model/formatter'}"
 >
 	<Page
-		id="page"
+		id="View2-page"
 		title="User"
 		showHeader="true" >
 		<customHeader>
@@ -24,12 +24,12 @@
 					<Button icon="sap-icon://search"/>
 					<Button icon="sap-icon://bell"/>
 					<Button class="theme-button" text="Theme" press="onOpenThemeMenu" />
-					<Avatar initials="SN" displaySize="XS" />
+					<Avatar initials="SM" displaySize="XS" />
 				</OverflowToolbar>
 		</customHeader>
 
 		<l:VerticalLayout class="sapUiContentPadding" width="50%">
-			<Input id="nameInput" type="text" placeholder="Enter Name" showSuggestion="true"/>
+			<Input id="nameInput" placeholder="Enter Name" showSuggestion="true"/>
 			<Button text="Go To Welcome" press="onWelcome"/>
 		</l:VerticalLayout>
 		
