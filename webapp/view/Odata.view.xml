@@ -10,28 +10,41 @@
 	xmlns:core="sap.ui.core"
 >
 	<Page
-		id="page"
-		title="OData Products"
+		id="Odata-page"
+		title="{i18n_demo>odataproduct}"
 		showHeader="true" >
+
+        <customHeader>
+				<OverflowToolbar>
+					<Button icon="sap-icon://nav-back" tooltip="{i18n_demo>navButtonTooltipText}" press="onNavBack"/>
+					<Button icon="sap-icon://menu2" press="onToggleSideNav" />
+					<Title text="{i18n_demo>productDetailsText}" level="H1" />
+					<ToolbarSpacer />
+					<Button icon="sap-icon://search"/>
+					<Button icon="sap-icon://bell"/>
+					<Button class="theme-button" text="{i18n_demo>themeText}" press="onOpenThemeMenu" />
+					<Avatar initials="SM" displaySize="XS" />
+				</OverflowToolbar>
+		</customHeader>
 
         
         <Table items="{/Products}"
                itemPress="onItemPress"
                width="95%"
-               class="sapUiMediumMarginBegin"
+               class="sapUiMediumMarginBegin sapUiLargeMarginTop"
          >
             <headerToolbar>
                 <OverflowToolbar>
-                    <Title text="Products" level="H2"/>
+                    <Title text="{i18n_demo>products}" level="H2"/>
                     <ToolbarSpacer/>
-                    <Button text="Create" press="onPressCreate"/>
+                    <Button text="{i18n_demo>createText}" press="onPressCreate"/>
                 </OverflowToolbar>
             </headerToolbar>
             <columns>
-                <Column><Text text="ID"/></Column>
-                <Column><Text text="Name"/></Column>
-                <Column><Text text="Description"/></Column>
-                <Column><Text text="Price"/></Column>
+                <Column><Text text="{i18n_demo>id}"/></Column>
+                <Column><Text text="{i18n_demo>name}"/></Column>
+                <Column><Text text="{i18n_demo>desc}"/></Column>
+                <Column><Text text="{i18n_demo>price}"/></Column>
             </columns>
 
             <items>
