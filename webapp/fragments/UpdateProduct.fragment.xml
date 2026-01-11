@@ -8,11 +8,11 @@
         <customHeader>
             <Bar>
                 <contentLeft>
-                    <Title text="Edit Product"/>
+                    <Title text="{i18n_demo>editProductText}"/>
                 </contentLeft>
 
                 <contentRight>
-                    <Button text="Delete"
+                    <Button text="{i18n_demo>deleteText}"
                             icon="sap-icon://delete"
                             type="Reject"
                             press="onPressDeleteProduct"/>
@@ -27,8 +27,8 @@
             columnsL="2"
             columnsXL="2">
             <form:content>
-            <core:Title text="Product Details" />
-            <Label required="true" text="Product ID" />
+            <core:Title text="{i18n_demo>productDetailsText}" />
+            <Label required="true" text="{i18n_demo>productIDText}" />
             <Input
                 id="idUpdateProductID"
                 value="{productModel>/productID}"
@@ -36,21 +36,21 @@
                 enabled="false"
                 />
 
-            <Label text="Product Name" />
+            <Label text="{i18n_demo>productNameText}" />
             <Input
                 id="idUpdateProductName"
                 maxLength="40"
                 value="{productModel>/productName}"
                 valueLiveUpdate="true" />
 
-            <Label required="true" text="Product Description" />
+            <Label required="true" text="{i18n_demo>desc}" />
             <Input
                 id="idUpdateProductDesc"
                 value="{productModel>/productDesc}"
                 valueLiveUpdate="true"
                 />
 
-            <Label text="Price" />
+            <Label text="{i18n_demo>price}" />
             <Input
                 id="idUpdatePrice"
                 type="Number"
@@ -60,11 +60,11 @@
             </form:content>
         </form:SimpleForm>
         <beginButton>
-        <Button type="Emphasized" text="Update" press="onPressUpdateProduct" />
+        <Button type="Emphasized" text="{i18n_demo>update}" press="onPressUpdateProduct" />
         
         </beginButton>
         <endButton>
-            <Button text="Cancel" press="onPressCancelEditProduct" />
+            <Button text="{i18n_demo>cancel}" press="onPressCancelEditProduct" />
         </endButton>
     </Dialog>
 </core:FragmentDefinition>
