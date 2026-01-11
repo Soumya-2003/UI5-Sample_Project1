@@ -26,7 +26,7 @@
 						<ToolbarSpacer />
 						<Button icon="sap-icon://search"/>
 						<Button class="theme-button" text="Theme" press="onOpenThemeMenu" />
-						<Avatar initials="SN" displaySize="XS" />
+						<Avatar initials="SM" displaySize="XS" />
 					</OverflowToolbar>
 				</customHeader>
 				<VBox class="sapUiSmallMargin">
