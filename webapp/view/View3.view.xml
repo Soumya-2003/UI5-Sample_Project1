@@ -34,7 +34,7 @@
 
 				<actions>
 					<m:Button class="theme-button" text="Theme" type="Transparent" press="onOpenThemeMenu" />
-					<m:Avatar initials="SN" displaySize="XS" />
+					<m:Avatar initials="SM" displaySize="XS" />
 				</actions>
 			</ObjectPageDynamicHeaderTitle>
 		</headerTitle>
