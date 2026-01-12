@@ -60,11 +60,11 @@
             </form:content>
         </form:SimpleForm>
         <beginButton>
-        <Button type="Emphasized" text="{i18n_demo>update}" press="onPressUpdateProduct" />
+        <Button type="Emphasized" text="{i18n_demo>update}" icon="sap-icon://edit" press="onPressUpdateProduct" />
         
         </beginButton>
         <endButton>
-            <Button text="{i18n_demo>cancel}" press="onPressCancelEditProduct" />
+            <Button text="{i18n_demo>cancel}" icon="sap-icon://cancel" press="onCancelUpdate" />
         </endButton>
     </Dialog>
 </core:FragmentDefinition>

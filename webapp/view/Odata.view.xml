@@ -37,7 +37,7 @@
                 <OverflowToolbar>
                     <Title text="{i18n_demo>products}" level="H2"/>
                     <ToolbarSpacer/>
-                    <Button text="{i18n_demo>createText}" press="onPressCreate"/>
+                    <Button icon="sap-icon://create" text="{i18n_demo>createText}" press="onPressCreate"/>
                 </OverflowToolbar>
             </headerToolbar>
             <columns>
