@@ -4,7 +4,7 @@
     xmlns:l="sap.ui.layout" 
     xmlns:form="sap.ui.layout.form"
     >
-    <Dialog contentWidth="800px" afterClose="onAfterCloseDialog">
+    <Dialog contentWidth="600px" afterClose="onAfterCloseDialog">
         <customHeader>
             <Bar>
                 <contentLeft>
