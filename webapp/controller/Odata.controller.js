@@ -34,7 +34,6 @@ sap.ui.define([
 
             if (!this._oCreateDialog) {
                 this._oCreateDialog = await sap.ui.core.Fragment.load({
-                    id: oView.getId(),
                     name: "sample.project1.fragments.CreateProduct",
                     controller: this
                 });
@@ -117,7 +116,6 @@ sap.ui.define([
 
             if (!this._oUpdateDialog) {
                 this._oUpdateDialog = await Fragment.load({
-                    id: oView.getId(),
                     name: "sample.project1.fragments.UpdateProduct",
                     controller: this
                 });
