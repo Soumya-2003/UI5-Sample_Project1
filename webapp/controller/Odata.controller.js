@@ -148,7 +148,7 @@ sap.ui.define([
             });
         },
 
-        onPressCancelEditProduct: function () {
+        onCancelUpdate: function () {
             this._oUpdateDialog.close();
         },
 
