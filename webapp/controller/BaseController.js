@@ -75,7 +75,7 @@ sap.ui.define([
         selectTheme: function (oEvent) {
 			var sTheme = oEvent.getParameter("item").getKey();
 			themeHelper.setTheme(sTheme);
-		},
+		}
 
 
     });
