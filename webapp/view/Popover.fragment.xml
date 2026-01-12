@@ -15,9 +15,9 @@
 			<tnt:NavigationList>
 				<tnt:NavigationListItem text="Home" icon="sap-icon://home" key="home"/>
 				<tnt:NavigationListItem text="User" icon="sap-icon://SAP-icons-TNT/user" key="user"/>
-				<tnt:NavigationListItem text="Welcome" key="welcome"/>
-				<tnt:NavigationListItem text="Employee" key="employee"/>
-				<tnt:NavigationListItem text="Odata" key="odata"/>
+				<tnt:NavigationListItem text="Welcome" icon="sap-icon://business-card" key="welcome"/>
+				<tnt:NavigationListItem text="Employee" icon="sap-icon://employee-lookup" key="employee"/>
+				<tnt:NavigationListItem text="Odata" icon="sap-icon://product" key="odata"/>
 			</tnt:NavigationList>
 
 	
