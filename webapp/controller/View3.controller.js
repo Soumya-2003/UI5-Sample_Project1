@@ -11,7 +11,7 @@ sap.ui.define([
             this.getOwnerComponent().getRouter().getRoute("WelcomePage").attachPatternMatched(this.onRouteMatched, this);
         },
         onRouteMatched: function (oEvent) {
-            const sFullName = decodeURIComponent(oEvent.getParameter("arguments").userName);
+            const sFullName = oEvent.getParameter("arguments").userName;
             let sfirstName = sFullName.trim().split(" ")[0];
             this.byId("welcomeText").setText("Welcome! " + sfirstName);
             this.byId("Username").setText(sFullName);
